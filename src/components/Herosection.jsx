@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 
 const slides = [
   {
-    img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1470",
+    img: "/taj.jpg",
     title: "LONDON",
     sub: "Explore the historic streets of London, from the iconic Big Ben to the majestic River Thames. Experience a blend of royal tradition and modern culture."
   },
   {
-    img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1496",
+    img: "/desert.jpg",
     title: "ROME",
     sub: "Step back in time in the Eternal City. From the Colosseum to the Vatican, Rome offers a journey through thousands of years of history and art."
   },
   {
-    img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1473",
+    img: "/balloon.jpg",
     title: "PARIS",
     sub: "Discover the City of Love. Witness the magic of the Eiffel Tower, the charm of Montmartre, and the world-class art at the Louvre Museum."
   },
   {
-    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1470",
+    img: "/xy.jpg",
     title: "DUBAI",
     sub: "Experience the future in the heart of the desert. From the heights of Burj Khalifa to luxury shopping, Dubai is a city of limitless possibilities."
   }

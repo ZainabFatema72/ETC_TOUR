@@ -11,7 +11,9 @@ const travelCards = [
   { img: "https://images.unsplash.com/photo-1587135941948-670b381f08ce", title: "THE BEST OF NORTH INDIA", sub: "Meet by our representative on arrival, welcome with garlanding and transfer to the hotel. Explore the rich heritage..." },
   { img: "https://images.unsplash.com/photo-1564507592333-c60657eea523", title: "DO DHAM YATRA", sub: "Arrival Delhi Airport / Railway Station, Meet & Assist by our representative. Later drive to the sacred shrines..." },
   { img: "https://cdn.i-travelled.com/wp-content/uploads/2018/04/tours.jpg", title: "KASHMIR", sub: "On arrival at Srinagar, you will be met by our representative and transfer you to Houseboat. Experience paradise..." },
-  { img: "https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2019/07/tajmahal-1.jpg", title: "LADAKH", sub: "On arrival at Leh airport, you will be met by our representative and transfer you to Hotel. Explore the desert..." }
+  { img: "https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2019/07/tajmahal-1.jpg", title: "LADAKH", sub: "On arrival at Leh airport, you will be met by our representative and transfer you to Hotel. Explore the desert..." },
+  { img: "https://cdn.i-travelled.com/wp-content/uploads/2018/04/tours.jpg", title: "KASHMIR", sub: "On arrival at Srinagar, you will be met by our representative and transfer you to Houseboat. Experience paradise..." },
+  
 ];
 
 const multiCards = [...travelCards, ...travelCards, ...travelCards];
@@ -20,8 +22,8 @@ const Tour = () => {
   return (
     <section className="relative w-full bg-white flex flex-col items-center justify-start overflow-hidden py-20">
       <div className="text-center mb-12 px-4">
-        <h2 className="text-black text-4xl md:text-6xl font-black uppercase tracking-tighter">
-          Explore Our <span className="text-blue-500">Packages</span>
+        <h2 className="text-black text-3xl md:text-5xl font-black uppercase tracking-tighter">
+          Our Customers <span className="text-blue-500">Favourite Destination</span>
         </h2>
         <div className="h-1.5 w-24 bg-blue-500 mx-auto mt-4 rounded-full"></div>
       </div>

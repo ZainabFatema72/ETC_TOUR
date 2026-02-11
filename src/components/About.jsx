@@ -1,95 +1,106 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const AboutHeroBalanced = () => {
-  const cities = ["Chennai", "Coimbatore", "Madurai", "Cochin", "Trivandrum", "Bangalore", "Mysore", "Vijayawada", "Vizag", "Hyderabad", "Mumbai", "Pune", "Bhopal", "Indore", "Ahmedabad", "Kolkata", "Jaipur", "Udaipur", "Jodhpur", "Lucknow", "Agra", "New Delhi", "Chandigarh", "Ludhiana"];
-
+const AboutSection = () => {
   return (
-    <section className="relative py-14 flex items-center text-white overflow-hidden bg-[#0a0a0a]">
-      {/* REF BACKGROUND: Exact Brown-Blue Cinematic Gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#3d2b1f] via-[#151515] to-[#0a2339] opacity-100"></div>
+    // Spacing tight karne ke liye padding kam ki gayi hai
+    <section id="about" className="relative w-full bg-white overflow-hidden py-8 md:py-12 font-sans">
+      
+      {/* BACKGROUND DECORATIVE ELEMENTS (Scrapbook style accents) */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-slate-100 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+        {/* Subtle watercolor texture overlay */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/p6.png')] opacity-10"></div>
+      </div>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* gap-12/20 ko kam karke gap-8/12 kiya hai */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           
-          {/* LEFT: SLIGHTLY BIGGER IMAGE */}
+          {/* LEFT CONTENT: MODERN CONSULTING STYLE (Diagonal Edge) */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full lg:w-[45%]"
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2 space-y-5" // space-y-8 ko kam kiya hai
           >
-            <div className="relative border border-white/10 p-1.5 bg-white/5 shadow-2xl">
-              <img 
-                src="https://www.expresstravelcorp.com/images/Tours%20and%20Travel%20Agency%20Chennai.jpg" 
-                className="w-full h-[480px] object-cover grayscale-[20%]" 
-                alt="About"
-              />
-              {/* Badge positioned exactly like premium brochures */}
-              <div className="absolute bottom-0 right-0 bg-blue-600 px-5 py-4 shadow-xl">
-                <span className="text-3xl font-black block leading-none">15+</span>
-                <span className="text-[9px] uppercase tracking-widest font-bold">Years of Trust</span>
+            <header className="space-y-3"> {/* space-y-4 ko kam kiya hai */}
+              <div className="flex items-center gap-3">
+                <span className="h-[2px] w-12 bg-blue-600"></span>
+                <span className="text-blue-600 font-bold uppercase tracking-[0.4em] text-[10px]">Ministry of Tourism Recognized</span>
               </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT: TEXT CONTENT (BALANCED SIZE) */}
-          <div className="w-full lg:w-[58%] space-y-5">
-            <motion.header
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-            >
-              <h2 className="text-4xl md:text-[44px] font-black uppercase tracking-tighter leading-[0.95] mb-2">
-                EXPRESS TRAVEL <br/>
-                <span className="text-blue-500">CORPORATE SERVICES LLP</span>
+              
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-[0.9] italic">
+                EXPRESS TRAVEL CORPORATE <br/>
+                <span className="text-blue-600">SERVICES LLP</span>
               </h2>
-              <p className="text-[10px] uppercase tracking-[0.4em] text-slate-400">Est. 31 January, 2008</p>
-            </motion.header>
+            </header>
 
-            <div className="text-[18px] leading-relaxed text-slate-300 space-y-4 text-justify pr-4">
-              <p>
-                <b className="text-white">Top India Tour Packages</b> is a renowned name in the travel industry. Recognized by the <b className="text-white">Ministry of Tourism, Govt. of India</b>, we provide unforgettable journeys across India's diverse landscapes.
+            <div className="space-y-4 text-slate-600 leading-relaxed text-[15px]"> {/* space-y-6 ko kam kiya hai */}
+              <p className="text-lg font-medium text-slate-800 italic border-l-4 border-blue-600 pl-6">
+                "Today, Top India Tour Packages has become a renowned name in the travel industry, thanks to dynamic leadership and hard work."
               </p>
               
               <p>
-                We serve <b className="text-white italic underline decoration-blue-500 underline-offset-4">Corporate Clients</b> with premium fleet management and <b className="text-white italic">Inbound Tourists</b> with bespoke South India packages (Tamil Nadu, Kerala, Andhra, Karnataka).
+                Established on <b>31 January, 2008</b>, we bridge the gap between business precision and leisure elegance. 
+                Whether it's premium fleet management for <b>Corporate Clients</b> or handcrafted <b>Inbound Tours</b> across South India, our 15+ years of expertise ensures premium quality.
               </p>
 
-              <p className="hidden md:block">
-                Specializing in Luxury and Special Interest Tours: <span className="text-blue-500 font-bold">Ayurveda, Yoga, Wildlife, Textiles, and Architecture.</span> We never compromise on personalized attention to detail.
-              </p>
+              <div className="grid grid-cols-2 gap-6 pt-2 border-t border-slate-100"> {/* pt-4 ko kam kiya hai */}
+                <div className="space-y-1">
+                  <h4 className="text-[11px] font-black uppercase tracking-widest text-blue-600">Specializations</h4>
+                  <p className="text-[13px] text-slate-500 leading-snug">Ayurveda, Yoga, Wildlife, Textiles, Art & Architecture.</p>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-[11px] font-black uppercase tracking-widest text-blue-600">Experience</h4>
+                  <p className="text-[13px] text-slate-500 leading-snug">Providing superior total travel management for over a decade.</p>
+                </div>
+              </div>
             </div>
 
-            <motion.div 
-              whileHover={{ x: 5 }}
-              className="inline-block"
-            >
-              <button className="bg-blue-600 text-white px-10 py-4 text-[15px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-lg active:scale-95">
-                Find Out More
-              </button>
-            </motion.div>
-          </div>
-        </div>
+            <button className="relative group bg-slate-900 text-white px-10 py-3.5 text-[12px] font-black uppercase tracking-[0.3em] transition-all hover:bg-blue-600 shadow-xl overflow-hidden rounded-sm">
+              <span className="relative z-10">Find Out More</span>
+              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
+            </button>
+          </motion.div>
 
-        {/* CITIES NETWORK FOOTER */}
-        <div className="mt-12 pt-6 border-t border-white/10 overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap gap-10 opacity-20 text-[11px] font-bold uppercase tracking-[0.2em]">
-            {cities.concat(cities).map((city, i) => (
-              <span key={i} className="hover:text-blue-400 transition-colors cursor-default">{city}</span>
-            ))}
+          {/* RIGHT: COMPOSITE IMAGE (Consulting Cut-out + Scrapbook Stack) */}
+          {/* h-500/600 ko thoda compact kiya hai */}
+          <div className="w-full lg:w-1/2 relative h-[450px] md:h-[550px] flex items-center justify-center">
+            
+            {/* Main Image with Diagonal Mask (Consulting Image Style) */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="absolute inset-0 z-0 overflow-hidden shadow-2xl rounded-sm"
+              style={{ clipPath: 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+            >
+              <img 
+                src="/about.jpg"
+                className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" 
+                alt="Main Travel Experience"
+              />
+              <div className="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
+            </motion.div>
+
+            
+
+            {/* Floating Ratings / Stats Badge (Bottom Right style) */}
+            <div className="absolute bottom-6 right-0 bg-white/90 backdrop-blur-md p-5 shadow-xl border-l-4 border-blue-600 z-30"> {/* padding aur bottom position kam ki hai */}
+               <div className="flex gap-1 mb-1.5">
+                 {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-500 text-sm">★</span>)}
+               </div>
+               <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest leading-none">Global Travel Excellence</p>
+               <p className="text-xl font-black text-slate-900 italic mt-1 leading-none">SINCE 2008</p>
+            </div>
           </div>
+
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .animate-marquee { animation: marquee 40s linear infinite; }
-      `}</style>
     </section>
   );
 };
 
-export default AboutHeroBalanced;
+export default AboutSection;
