@@ -1,184 +1,198 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+
 import { 
-  Users, Award, ShieldCheck, Globe, 
-  Palmtree, Flower2, Gem, Landmark,
-  MapPin, Phone, Mail, Clock, Briefcase, Car, Hotel, Ship
+  MapPin, Plane, ChevronRight, PhoneCall, 
+  Calendar, Camera, Heart, Award, Users, 
+  Briefcase, Star, ShieldCheck, Globe, Palmtree
 } from 'lucide-react';
 
-const AboutPage = () => {
+const AboutUsETC = () => {
+  // Updated to 7 Specializations
+ 
+
+  const services = [
+    "India Tours (Domestic)", "Inbound Tours", "International Tours", "Group/Customized Tours",
+    "Luxury Car/Coach Rentals", "Hotel Bookings", "Wedding Events", "Air Ticketing",
+    "MICE (Meetings & Events)", "Cruises", "Visa & Passport", "Forex"
+  ];
+
   return (
-    <div className="bg-white text-slate-900 font-sans overflow-hidden">
+    <div className="min-h-screen bg-white font-sans overflow-hidden">
       
-      {/* SECTION 1: CINEMATIC HERO (Ref: image_63252a Style) */}
-      <section className="relative h-[60vh] flex items-center pt-20 overflow-hidden">
+      {/* --- HERO SECTION: 80VH HEIGHT --- */}
+      <section className="relative h-[80vh] min-h-[700px] flex items-center overflow-hidden">
+        
+        {/* Pure Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2071" 
-            alt="India Heritage" 
-            className="w-full h-full object-cover grayscale-[20%]"
+            src="/backgroundAbout.jpg" 
+            className="w-full h-full object-cover"
+            alt="Travel Background"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2339]/90 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
         </div>
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="max-w-2xl"
-          >
-            <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4">
-              About <span className="text-blue-400">Us</span>
-            </h1>
-            <p className="text-blue-100 text-lg uppercase tracking-widest font-bold border-l-4 border-blue-400 pl-6">
-              Synonymous with leisure and business travel management
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* SECTION 2: THE LEGACY (Ref: image_63252a "Trusted Agency" Layout) */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mb-4 block">Established 31 January, 2008</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-slate-900 mb-8">
-                Premium Total <br/>
-                <span className="text-blue-600">Travel Management</span>
-              </h2>
-              <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
-                <p>
-                  <span className="font-bold text-slate-900">EXPRESS TRAVEL CORPORATE SERVICES LLP (ETC)</span> has focused for the past 10 years on providing the world community—from individuals to large groups—with a superior total travel management service of premium quality.
-                </p>
-                <p>
-                  We never compromise on the personalised service and attention to detail which every customer expects and deserves. We visualize exotic dreams by designing tours as per our clients' liking.
-                </p>
-              </div>
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 items-center relative z-10 w-full">
+          
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <div className="h-[2px] w-8 bg-[#00D1FF]"></div>
+              <span className="text-white font-bold uppercase tracking-widest text-xs drop-shadow-md">
+                Est. 31 January, 2008
+              </span>
             </div>
-            
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?q=80&w=2070" 
-                className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
-                alt="Architecture"
-              />
-              <div className="absolute -bottom-10 -left-10 bg-[#0a2339] p-10 rounded-2xl text-white shadow-2xl hidden md:block border-b-8 border-blue-600">
-                <p className="text-5xl font-black leading-none">10+</p>
-                <p className="text-xs uppercase tracking-widest font-bold mt-2">Years of Trust</p>
-              </div>
+            <h1 className="text-4xl md:text-6xl font-black text-white uppercase leading-[0.9] mb-6 tracking-tighter drop-shadow-2xl">
+              EXPRESS TRAVEL <br /> <span className="text-[#00D1FF]">CORPORATE</span> <br /> SERVICES LLP
+            </h1>
+            <p className="text-white text-base md:text-lg leading-relaxed mb-8 italic border-l-4 border-[#00D1FF] pl-4 drop-shadow-lg font-medium max-w-xl">
+              "Synonymous with leisure and business travel. We provide a superior total travel management service of premium quality."
+            </p>
+            <div className="flex gap-4">
+               <div className="bg-black/30 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl">
+                  <p className="text-xl font-bold text-white tracking-tighter italic">15+ Years</p>
+                  <p className="text-[10px] uppercase font-bold text-[#00D1FF]">Legacy of Excellence</p>
+               </div>
+               <div className="bg-black/30 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl">
+                  <p className="text-xl font-bold text-white tracking-tighter italic">Premium</p>
+                  <p className="text-[10px] uppercase font-bold text-[#00D1FF]">Service Quality</p>
+               </div>
             </div>
+          </motion.div>
+
+          {/* --- 7 DIAMOND GRID (Optimized for 80vh) --- */}
+          <div className="relative h-[550px] w-full flex items-center justify-center scale-90 md:scale-100">  
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: SPECIALIZED DIVISIONS (Ref: image_63252a Feature Cards) */}
-      <section className="bg-slate-50 py-24">
+      {/* --- SPECIAL INTEREST TOURISM --- */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+                <h2 className="text-4xl font-black text-[#001F7A] uppercase tracking-tighter leading-none">
+                   Specialists in <br/> <span className="text-[#0033CC]">Luxury & Interest Tours</span>
+                </h2>
+                <p className="text-slate-600 leading-relaxed text-lg">
+                   ETC specializes in Luxury, Incentive, Exclusive, and Special Interest Tours with emphasis on <b>Ayurveda, Yoga, Wildlife, Textiles, Jewellery, Art & Crafts and Architecture.</b>
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                    {[
+                        { t: "South India", d: "Temple Tours & Ayurveda" },
+                        { t: "North India", d: "Golden Triangle & Rajasthan" },
+                        { t: "Kashmir", d: "The Best of Paradise" },
+                        { t: "MICE", d: "Corporate Excellence" }
+                    ].map((item, i) => (
+                        <div key={i} className="flex flex-col p-4 bg-slate-50 rounded-2xl border-l-4 border-[#0033CC]">
+                            <span className="font-bold text-[#001F7A] text-sm">{item.t}</span>
+                            <span className="text-[10px] text-slate-500 uppercase font-bold">{item.d}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            
+            <div className="relative h-[450px]">
+                <div className="absolute inset-0 bg-[#0033CC] rotate-3 rounded-[3rem]"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?q=80&w=2070" 
+                  className="absolute inset-0 w-full h-full object-cover -rotate-3 rounded-[3rem] shadow-2xl border-4 border-white"
+                  alt="Culture India"
+                />
+            </div>
+        </div>
+      </section>
+
+      {/* --- SERVICE SPECTRUM GRID --- */}
+      <section className="py-24 bg-[#001F7A] text-white rounded-t-[5rem]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-black uppercase tracking-tighter text-slate-900">Specialized <span className="text-blue-600">Focus Areas</span></h2>
-            <p className="text-slate-500 mt-2 uppercase tracking-[0.2em] text-xs font-bold">Insightful tours for fairs, festivals, and culture</p>
+            <h2 className="text-5xl font-black uppercase tracking-tighter">Service <span className="text-[#00D1FF]">Spectrum</span></h2>
+            <div className="h-1 w-24 bg-[#00D1FF] mx-auto mt-4"></div>
           </div>
-          <div className="grid md:grid-cols-4 gap-0 rounded-3xl overflow-hidden shadow-2xl">
-            <div className="bg-blue-600 p-10 text-white hover:bg-blue-700 transition-colors">
-              <Flower2 className="w-10 h-10 mb-6" />
-              <h3 className="text-sm font-bold uppercase mb-4 tracking-widest">Ayurveda & Yoga</h3>
-              <p className="text-blue-100 text-[11px] leading-relaxed uppercase">Traditional healing retreats and wellness focus.</p>
-            </div>
-            <div className="bg-[#00acc1] p-10 text-white hover:bg-[#0097a7] transition-colors">
-              <Palmtree className="w-10 h-10 mb-6" />
-              <h3 className="text-sm font-bold uppercase mb-4 tracking-widest">Wildlife Safaris</h3>
-              <p className="text-blue-50 text-[11px] leading-relaxed uppercase">Experience cultural, historical, and tribal India.</p>
-            </div>
-            <div className="bg-[#00838f] p-10 text-white hover:bg-[#006064] transition-colors">
-              <Gem className="w-10 h-10 mb-6" />
-              <h3 className="text-sm font-bold uppercase mb-4 tracking-widest">Art & Crafts</h3>
-              <p className="text-blue-50 text-[11px] leading-relaxed uppercase">Emphasis on textiles, jewellery, and architecture.</p>
-            </div>
-            <div className="bg-[#0a2339] p-10 text-white hover:bg-slate-900 transition-colors">
-              <Landmark className="w-10 h-10 mb-6" />
-              <h3 className="text-sm font-bold uppercase mb-4 tracking-widest">Temple Tours</h3>
-              <p className="text-slate-300 text-[11px] leading-relaxed uppercase">South India and traditionally frequented destinations.</p>
-            </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {services.map((service, i) => (
+              <motion.div 
+                whileHover={{ y: -5, backgroundColor: '#0033CC' }}
+                key={i} 
+                className="p-6 bg-white/5 border border-white/10 rounded-3xl transition-all group cursor-pointer"
+              >
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                  <ChevronRight className="w-4 h-4 text-[#00D1FF]" />
+                </div>
+                <p className="text-xs font-bold uppercase tracking-widest leading-tight">{service}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: SERVICE SPECTRUM (Ref: image_631242 Detail Layout) */}
+      {/* --- OUR SETUP & QUALITY --- */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-3 gap-16">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl font-black uppercase tracking-tighter text-slate-900 mb-6">Our Tour & <br/><span className="text-blue-600">Travel Services</span></h2>
-              <p className="text-slate-500 text-sm leading-relaxed mb-8 uppercase font-bold tracking-wider">
-                We are a distinguished service provider backed by an efficient and devoted team of professionals.
-              </p>
-              <div className="p-6 bg-blue-50 border-l-4 border-blue-600">
-                <p className="text-xs font-black uppercase text-blue-900 leading-loose">
-                  Our team acts as determined pillars of strength, assisting in fast-paced progress and keeping our goodwill intact.
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+           <div className="relative h-[500px] order-2 md:order-1">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border-2 border-dashed border-[#0033CC]/30 rounded-full animate-spin-slow"></div>
+              <motion.div 
+                 animate={{ scale: [1, 1.05, 1] }} 
+                 transition={{ repeat: Infinity, duration: 4 }}
+                 className="absolute inset-0 overflow-hidden rounded-full shadow-2xl border-[15px] border-slate-50"
+              >
+                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070" className="w-full h-full object-cover" alt="Office Setup" />
+              </motion.div>
+           </div>
+
+           <div className="space-y-8 order-1 md:order-2">
+              <div>
+                <h3 className="text-4xl font-black uppercase text-[#001F7A] tracking-tighter mb-4">Infrastructural Setup</h3>
+                <p className="text-slate-600 leading-relaxed italic">
+                  "Backed by an efficient and devoted team of professionals and world-class systems to back our operations."
                 </p>
               </div>
-            </div>
-            
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                { name: "Inbound & Domestic Tours", icon: <MapPin className="w-4 h-4"/> },
-                { name: "Luxury Car/Coach Rentals", icon: <Car className="w-4 h-4"/> },
-                { name: "Hotel Bookings", icon: <Hotel className="w-4 h-4"/> },
-                { name: "Wedding Events", icon: <Users className="w-4 h-4"/> },
-                { name: "MICE (Events & Conferences)", icon: <Briefcase className="w-4 h-4"/> },
-                { name: "International Cruises", icon: <Ship className="w-4 h-4"/> },
-                { name: "Visa & Passport Guidance", icon: <Globe className="w-4 h-4"/> },
-                { name: "Forex Services", icon: <Clock className="w-4 h-4"/> }
-              ].map((service, i) => (
-                <div key={i} className="flex items-center gap-4 p-5 border border-slate-100 hover:shadow-lg transition-all rounded-lg group">
-                  <div className="text-blue-600 group-hover:scale-110 transition-transform">{service.icon}</div>
-                  <span className="font-bold uppercase text-[10px] tracking-[0.1em] text-slate-800">{service.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+              
+              <div className="space-y-6">
+                 {[
+                   { t: "Determined Pillars", d: "Team that acts as strength for fast-paced progress.", icon: <Users/> },
+                   { t: "Premium Quality", d: "Motivated to improvise services on a regular basis.", icon: <ShieldCheck/> },
+                   { t: "Exotic Dreams", d: "Designing tours as per your liking & hotel reservations.", icon: <Globe/> }
+                 ].map((item, i) => (
+                   <div key={i} className="flex gap-4 items-center">
+                      <div className="bg-[#0033CC] p-3 rounded-xl text-white shadow-lg">{item.icon}</div>
+                      <div>
+                        <p className="font-bold text-[#001F7A] uppercase text-sm">{item.t}</p>
+                        <p className="text-xs text-slate-500 font-medium">{item.d}</p>
+                      </div>
+                   </div>
+                 ))}
+              </div>
+           </div>
         </div>
       </section>
 
-      {/* SECTION 5: CONTACT & BRANCHES (Ref: image_583bc3 Footer Style) */}
-      <footer className="bg-slate-900 py-24 text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-white/5 pb-16 mb-12">
-            <div>
-              <h4 className="text-xl font-black text-blue-400 uppercase tracking-tighter mb-6">Express Travel</h4>
-              <p className="text-slate-500 text-[10px] leading-relaxed uppercase tracking-widest font-bold">
-                Registered Office: New No.21, New Tank Street, Nungambakkam, Chennai – 600 034.
-              </p>
-            </div>
-            <div>
-              <h5 className="font-bold text-xs uppercase tracking-[0.3em] mb-6 text-slate-400">Managers</h5>
-              <div className="space-y-4 text-[10px] font-black uppercase tracking-widest">
-                <p><span className="text-blue-500">Transport:</span> Mr. Suresh <br/> +91 98408 87777</p>
-                <p><span className="text-blue-500">Tours:</span> Mr. Mohan <br/> +91 97910 07710</p>
+      {/* --- FOOTER CTA CARD --- */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-5xl mx-auto px-6">
+           <div className="bg-[#001F7A] p-10 rounded-[3rem] shadow-2xl relative overflow-hidden text-center md:text-left">
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                  <h4 className="text-3xl font-black text-white uppercase tracking-tighter">Talk to our Brilliant <br/><span className="text-[#00D1FF]">Vacation Planners</span></h4>
+                  <p className="text-blue-100/60 mt-2">Create a unique tailor-made, private tour meant for you exclusively.</p>
+                </div>
+                <div className="bg-[#00D1FF] p-8 rounded-3xl text-[#001F7A] shadow-xl">
+                   <p className="text-[10px] uppercase font-black tracking-widest">Direct Contact Line</p>
+                   <p className="text-3xl font-black tracking-tighter">+91-9906038508</p>
+                </div>
               </div>
-            </div>
-            <div>
-              <h5 className="font-bold text-xs uppercase tracking-[0.3em] mb-6 text-slate-400">Nationwide Setup</h5>
-              <ul className="text-[10px] text-slate-500 space-y-2 uppercase font-bold tracking-widest">
-                <li>• New Delhi (Sheikh Sarai)</li>
-                <li>• Bhopal (Hoshangabad Road)</li>
-                <li>• Indore (Ring Road)</li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-bold text-xs uppercase tracking-[0.3em] mb-6 text-slate-400">Support</h5>
-              <p className="text-[10px] text-slate-500 font-bold uppercase mb-2 flex items-center gap-2"><Mail className="w-3 h-3"/> enquiry@expresstravelcorp.com</p>
-              <p className="text-[10px] text-slate-500 font-bold uppercase flex items-center gap-2"><Phone className="w-3 h-3"/> +91-44-2827 2279</p>
-            </div>
-          </div>
-          <div className="text-center text-[9px] text-slate-600 uppercase tracking-[0.5em] font-black">
-            Copyright © 2026. EXPRESS TRAVEL CORPORATE SERVICES LLP. All Rights Reserved.
-          </div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+           </div>
         </div>
-      </footer>
+      </section>
+
     </div>
   );
 };
 
-export default AboutPage;
+export default AboutUsETC;

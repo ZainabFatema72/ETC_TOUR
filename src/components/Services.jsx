@@ -1,139 +1,230 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Car, Hotel, Heart, Plane, Users, Ship, FileText, Globe, DollarSign 
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // New state for Drawer
+
   const services = [
     {
       title: "Transportation",
       desc: "Your choice of cars and reliable services at the best available prices.",
-      icon: <Car className="w-8 h-8" />,
-      color: "bg-blue-500"
+      img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070",
     },
     {
       title: "Hotels",
-      desc: "Get the best hotel deals, with C&K's assurance of quality service.",
-      icon: <Hotel className="w-8 h-8" />,
-      color: "bg-teal-500"
+      desc: "Get the best hotel deals with our assurance of premium quality service.",
+      img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
     },
     {
       title: "Wedding Events",
-      desc: "Every wedding we undertake is a unique package that fits the couple like their perfect engagement ring!",
-      icon: <Heart className="w-8 h-8" />,
-      color: "bg-rose-500"
+      desc: "Every wedding we undertake is a unique package designed for your perfect day.",
+      img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069",
     },
     {
       title: "Flights",
       desc: "Time your flights to suit your holiday itinerary and eliminate delays.",
-      icon: <Plane className="w-8 h-8" />,
-      color: "bg-sky-500"
+      img: "https://images.pexels.com/photos/62623/wing-plane-flying-airplane-62623.jpeg",
     },
     {
       title: "MICE",
-      desc: "Specialized niche of group tourism dedicated to planning, booking, and facilitating conferences.",
-      icon: <Users className="w-8 h-8" />,
-      color: "bg-indigo-600"
+      desc: "Specialized niche of group tourism dedicated to planning and facilitating conferences.",
+      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069",
     },
     {
       title: "Cruises",
       desc: "Find the right package and set sail for your dream cruise vacation.",
-      icon: <Ship className="w-8 h-8" />,
-      color: "bg-cyan-600"
+      img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=2070",
     },
     {
       title: "Visa",
-      desc: "Expert assistance in navigating the complex world of international travel documentation.",
-      icon: <Globe className="w-8 h-8" />,
-      color: "bg-emerald-600"
+      desc: "Expert assistance in navigating international travel documentation.",
+      img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2017",
     },
     {
       title: "Passport",
-      desc: "Facilitating appointments and documentation for swift passport processing with right guidance.",
-      icon: <FileText className="w-8 h-8" />,
-      color: "bg-amber-500"
+      desc: "Facilitating appointments and documentation for swift passport processing.",
+      img: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=2070",
     },
     {
       title: "Forex",
-      desc: "Leading retail forex dealers authorized by RBI to provide seamless currency solutions.",
-      icon: <DollarSign className="w-8 h-8" />,
-      color: "bg-green-600"
+      desc: "Authorized RBI retail forex dealers providing seamless currency solutions.",
+      img: "https://images.pexels.com/photos/12955791/pexels-photo-12955791.jpeg",
     }
   ];
 
-  return (
-    <section className="py-20 bg-slate-50 font-sans">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Header - Ref: image_583bc3 "Why we are the best" style */}
-        <div className="text-center mb-16">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs"
-          >
-            Express Travel Corporate Services LLP
-          </motion.span>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mt-3">
-            Premium <span className="text-blue-600">Travel Services</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-blue-600 mx-auto mt-6 rounded-full"></div>
-          <p className="max-w-2xl mx-auto mt-6 text-slate-500 text-sm md:text-base leading-relaxed">
-            From luxury fleet management to global tour planning, we provide a superior total travel management service.
-          </p>
-        </div>
+  const handleInquiryClick = () => {
+    setIsDrawerOpen(true);
+  };
 
-        {/* Services Grid - Ref: image_583bc3 icon style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -10 }}
-              className="bg-white p-10 shadow-xl shadow-slate-200/50 border border-slate-100 relative group overflow-hidden"
+  return (
+    <div className="bg-white text-slate-900 font-sans overflow-hidden">
+      
+      {/* HERO SECTION */}
+      <section className="relative h-[60vh] flex items-center pt-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2071" 
+            alt="Services Header" 
+            className="w-full h-full object-cover grayscale-[20%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2339]/90 to-transparent"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
+          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
+            <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4">
+              Our <span className="text-blue-400">Services</span>
+            </h1>
+            <p className="text-blue-100 text-lg uppercase tracking-widest font-bold border-l-4 border-blue-400 pl-6">
+              Premium Total Travel Management Solutions
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVICE GRID */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="mb-12 border-l-4 border-blue-600 pl-6">
+            <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">World-Class <span className="text-blue-600">Solutions</span></h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div 
+                key={index} 
+                onClick={() => setSelectedService(service)}
+                className="relative h-[280px] overflow-hidden group rounded-xl shadow-md cursor-pointer border border-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
+              >
+                <img src={service.img} alt={service.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/10 to-transparent"></div>
+                <div className="absolute inset-0 flex flex-col justify-end p-6 text-left">
+                  <h3 className="text-white text-lg font-black uppercase tracking-tight mb-4">{service.title}</h3>
+                  <div className="flex items-center gap-3 text-[9px] font-black text-white uppercase tracking-[0.3em] bg-blue-600/30 backdrop-blur-md border border-white/20 py-2 px-5 w-fit rounded-full group-hover:bg-blue-600 transition-all">
+                    Explore Service <span>→</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICE MODAL */}
+      <AnimatePresence>
+        {selectedService && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-white max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl relative"
             >
-              {/* Icon Background Circle */}
-              <div className={`w-16 h-16 ${service.color} text-white rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                {service.icon}
+              <button onClick={() => setSelectedService(null)} className="absolute top-4 right-4 z-20 bg-black/10 hover:bg-red-500 text-white p-2 h-10 w-10 flex items-center justify-center rounded-full transition-all">✕</button>
+              
+              <div className="h-56 relative overflow-hidden">
+                <img src={selectedService.img} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8 text-left">
+                   <h2 className="text-white text-3xl font-black uppercase tracking-tighter">{selectedService.title}</h2>
+                </div>
               </div>
 
-              <h3 className="text-xl font-extrabold text-slate-900 uppercase tracking-tight mb-4">
-                {service.title}
-              </h3>
-              
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 h-12 line-clamp-2">
-                {service.desc}
-              </p>
-
-              <button className="text-xs font-black uppercase tracking-widest text-blue-600 flex items-center gap-2 group-hover:gap-4 transition-all">
-                Know More <span className="text-lg">→</span>
-              </button>
-
-              {/* Decorative Corner Element */}
-              <div className={`absolute -bottom-4 -right-4 w-12 h-12 ${service.color} opacity-5 rounded-full group-hover:scale-[5] transition-all duration-700`}></div>
+              <div className="p-10 text-left">
+                <p className="text-blue-600 font-black text-[10px] uppercase tracking-widest mb-4">Detailed Service Portfolio</p>
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-8">
+                  {selectedService.desc} Express Travel Corporate Services LLP ensures that every aspect of {selectedService.title.toLowerCase()} is handled with professional precision and personalized care.
+                </p>
+                <div className="flex justify-between items-center pt-6 border-t border-slate-100">
+                  <button 
+                    onClick={handleInquiryClick} 
+                    className="bg-blue-600 text-white px-8 py-3 text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all"
+                  >
+                    Inquire Now
+                  </button>
+                  <span className="text-slate-400 text-[9px] font-bold uppercase tracking-widest">Govt Approved Agency</span>
+                </div>
+              </div>
             </motion.div>
-          ))}
-        </div>
+          </div>
+        )}
+      </AnimatePresence>
 
-        {/* Call to Action - Ref: image_630aa5 search bar style */}
-        <div className="mt-20 bg-[#0a2339] p-8 md:p-12 text-center relative overflow-hidden">
-          <div className="absolute top-0 right-0 opacity-10">
-            <Globe className="w-64 h-64 text-white" />
-          </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight relative z-10">
-            Need a Customized Travel Solution?
-          </h3>
-          <p className="text-blue-200 mt-2 relative z-10 text-sm uppercase tracking-widest">
-            One of our executives will call you back soon
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4 relative z-10">
-            <button className="bg-blue-600 text-white px-10 py-4 text-xs font-black uppercase tracking-[0.2em] hover:bg-white hover:text-blue-900 transition-all shadow-xl">
-              Get a Call Back Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
+      {/* SIDE DRAWER LEAD FORM */}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <>
+            {/* Backdrop for Drawer */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsDrawerOpen(false)}
+              className="fixed inset-0 bg-slate-900/60 z-[110] backdrop-blur-sm"
+            />
+            
+            {/* Drawer Content */}
+            <motion.div 
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-[120] shadow-2xl p-10 flex flex-col"
+            >
+              <div className="flex justify-between items-center mb-10">
+                <h2 className="text-2xl font-black uppercase tracking-tighter text-slate-900">
+                  Service <span className="text-blue-600">Inquiry</span>
+                </h2>
+                <button onClick={() => setIsDrawerOpen(false)} className="text-slate-400 hover:text-red-500 font-bold">CLOSE ✕</button>
+              </div>
+
+              <form className="space-y-6 text-left" onSubmit={(e) => { e.preventDefault(); alert('Inquiry Sent!'); setIsDrawerOpen(false); }}>
+                <div>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">Service Interested In</label>
+                  <input 
+                    type="text" 
+                    readOnly 
+                    value={selectedService?.title || "General Inquiry"} 
+                    className="w-full bg-slate-50 border-b-2 border-slate-200 py-3 px-4 font-bold text-blue-600 outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">Your Full Name</label>
+                  <input required type="text" placeholder="full name" className="w-full border-b-2 border-slate-200 py-3 px-4 outline-none focus:border-blue-600 transition-all" />
+                </div>
+
+                <div>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">Phone Number</label>
+                  <input required type="tel" placeholder="+91 XXXXX XXXXX" className="w-full border-b-2 border-slate-200 py-3 px-4 outline-none focus:border-blue-600 transition-all" />
+                </div>
+
+                <div>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">Email Address</label>
+                  <input required type="email" placeholder="john@company.com" className="w-full border-b-2 border-slate-200 py-3 px-4 outline-none focus:border-blue-600 transition-all" />
+                </div>
+
+                <div>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">Message (Optional)</label>
+                  <textarea rows="3" placeholder="Tell us about your requirements..." className="w-full border-b-2 border-slate-200 py-3 px-4 outline-none focus:border-blue-600 transition-all resize-none"></textarea>
+                </div>
+
+                <button type="submit" className="w-full bg-blue-600 text-white py-4 font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-900 transition-all mt-6 shadow-lg shadow-blue-200">
+                  Submit Inquiry
+                </button>
+              </form>
+
+              <div className="mt-auto pt-10 border-t border-slate-100">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-loose">
+                  Our Manager will contact you within 24 hours. <br/>
+                  <span className="text-blue-600">Urgent? Call +91 98408 87777</span>
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const AboutSection = () => {
+  const navigate = useNavigate();
   return (
     // Spacing tight karne ke liye padding kam ki gayi hai
     <section id="about" className="relative w-full bg-white overflow-hidden py-8 md:py-12 font-sans">
@@ -11,7 +13,7 @@ const AboutSection = () => {
         <div className="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-slate-100 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
         {/* Subtle watercolor texture overlay */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/p6.png')] opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('https://www.progressivetourtravels.com/images/banner/heritage-tour-packages-india-banner-mob.webp')] opacity-10"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -59,7 +61,11 @@ const AboutSection = () => {
               </div>
             </div>
 
-            <button className="relative group bg-slate-900 text-white px-10 py-3.5 text-[12px] font-black uppercase tracking-[0.3em] transition-all hover:bg-blue-600 shadow-xl overflow-hidden rounded-sm">
+            {/* 3. onClick handler add kiya gaya hai */}
+            <button 
+              onClick={() => navigate('/about')} 
+              className="relative group bg-slate-900 text-white px-10 py-3.5 text-[12px] font-black uppercase tracking-[0.3em] transition-all hover:bg-blue-600 shadow-xl overflow-hidden rounded-sm cursor-pointer"
+            >
               <span className="relative z-10">Find Out More</span>
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
             </button>
@@ -75,10 +81,10 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="absolute inset-0 z-0 overflow-hidden shadow-2xl rounded-sm"
-              style={{ clipPath: 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+              
             >
               <img 
-                src="/about.jpg"
+                src="https://www.irctctourism.com/all-india-tour-packages/img/1stsection.jpg"
                 className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" 
                 alt="Main Travel Experience"
               />
@@ -88,12 +94,12 @@ const AboutSection = () => {
             
 
             {/* Floating Ratings / Stats Badge (Bottom Right style) */}
-            <div className="absolute bottom-6 right-0 bg-white/90 backdrop-blur-md p-5 shadow-xl border-l-4 border-blue-600 z-30"> {/* padding aur bottom position kam ki hai */}
+            <div className="absolute bottom-6 right-0 bg-blue-700 backdrop-blur-md p-2 shadow-xl border-l-4 border-blue-200 z-30"> 
                <div className="flex gap-1 mb-1.5">
                  {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-500 text-sm">★</span>)}
                </div>
-               <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest leading-none">Global Travel Excellence</p>
-               <p className="text-xl font-black text-slate-900 italic mt-1 leading-none">SINCE 2008</p>
+               <p className="text-[8px] font-black uppercase text-white tracking-widest leading-none">Global Travel Excellence</p>
+               <p className="text-[12px] font-black text-white italic mt-1 leading-none">SINCE 2008</p>
             </div>
           </div>
 

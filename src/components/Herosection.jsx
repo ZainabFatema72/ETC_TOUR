@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 
 const slides = [
   {
-    img: "/taj.jpg",
-    title: "LONDON",
-    sub: "Explore the historic streets of London, from the iconic Big Ben to the majestic River Thames. Experience a blend of royal tradition and modern culture."
+    img: "agra.jpg",
+    title: "AGRA",
+    sub: "Witness the timeless beauty of the Taj Mahal. A symbol of eternal love and a masterpiece of Mughal architecture."
   },
   {
-    img: "/desert.jpg",
-    title: "ROME",
-    sub: "Step back in time in the Eternal City. From the Colosseum to the Vatican, Rome offers a journey through thousands of years of history and art."
+    img: "kerla.jpg",
+    title: "KERALA",
+    sub: "Escape to God's Own Country. Experience the tranquil backwaters and lush tea plantations."
   },
   {
-    img: "/balloon.jpg",
-    title: "PARIS",
-    sub: "Discover the City of Love. Witness the magic of the Eiffel Tower, the charm of Montmartre, and the world-class art at the Louvre Museum."
-  },
+    img: "/pondi.jpg",
+    title: "MUMBAI",
+    sub: "Experience the city that never sleeps. From the colonial charm of Gateway of India to the dazzling Queen's Necklace at Marine Drive."
+},
   {
-    img: "/xy.jpg",
-    title: "DUBAI",
-    sub: "Experience the future in the heart of the desert. From the heights of Burj Khalifa to luxury shopping, Dubai is a city of limitless possibilities."
+    img: "/jaipur.jpg",
+    title: "JAIPUR",
+    sub: "Explore the Pink City's royal heritage. Majestic forts and Rajputana history await you."
   }
 ];
 
@@ -29,12 +29,13 @@ const Herosection = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 5000); 
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="relative w-full h-[95vh] overflow-hidden bg-black font-sans">
+    // Height ko h-screen se badal kar h-[75vh] kiya hai
+    <section className="relative w-full h-[75vh] md:h-[95vh] overflow-hidden  font-sans">
       {/* --- BACKGROUND SLIDESHOW --- */}
       {slides.map((slide, index) => (
         <div
@@ -46,74 +47,65 @@ const Herosection = () => {
           <img
             src={slide.img}
             alt={slide.title}
-            className={`w-full h-full object-cover transform ${
-                index === current ? "animate-kenburns scale-110" : "scale-100"
+            className={`w-full h-full object-cover transform transition-transform duration-[7000ms] ease-out ${
+              index === current ? "scale-110" : "scale-100"
             }`}
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/70"></div>
         </div>
       ))}
 
-      {/* --- RIGHT-TO-CENTER TEXT ANIMATION --- */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+      {/* --- CENTER TEXT --- */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 pt-10">
         {slides.map((slide, index) => (
           index === current && (
             <div key={index} className="flex flex-col items-center">
-              <h1 className="text-white text-5xl md:text-9xl font-black uppercase tracking-tighter animate-slide-in">
+              <span className="text-blue-500 font-black tracking-[0.4em] text-[10px] md:text-xs mb-2 animate-slide-in uppercase">
+                Explore Incredible India
+              </span>
+              
+              <h1 className="text-white text-5xl md:text-8xl font-black uppercase tracking-tighter animate-slide-in leading-none">
                 {slide.title}
               </h1>
               
-              <div className="h-1 w-20 bg-orange-500 my-4 animate-slide-in delay-100"></div>
+              <div className="h-1 w-20 bg-blue-500 my-4 animate-slide-in delay-100"></div>
 
-              <p className="text-gray-100 text-sm md:text-xl max-w-2xl font-medium leading-relaxed animate-slide-in delay-200">
+              <p className="text-gray-200 text-xs md:text-lg max-w-xl font-medium leading-relaxed animate-slide-in delay-200">
                 {slide.sub}
               </p>
-
-              <button className="mt-10 px-10 py-4 bg-blue-500 text-white font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-300 animate-slide-in delay-300">
-                Book Your Trip
-              </button>
             </div>
           )
         ))}
+
+        {/* STATIC BUTTON */}
+        <div className="z-30 mt-8">
+            <button className="px-8 py-3 bg-blue-600 text-white font-black uppercase tracking-widest text-[11px] hover:bg-slate-700 transition-all duration-300 shadow-xl">
+              Book Your Trip
+            </button>
+        </div>
       </div>
 
-      {/* --- SLIDE INDICATORS (BOTTOM) --- */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      {/* INDICATORS - Thoda upar shift kiye hain */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, i) => (
           <button 
             key={i} 
             onClick={() => setCurrent(i)}
-            className={`h-1.5 transition-all duration-500 rounded-full ${i === current ? "w-12 bg-orange-500" : "w-4 bg-white/30"}`}
+            className={`h-1.5 transition-all duration-500 rounded-none ${
+                i === current ? "w-10 bg-blue-500" : "w-3 bg-white/30"
+            }`}
           ></button>
         ))}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes slideIn {
-          0% {
-            transform: translateX(150px);
-            opacity: 0;
-            filter: blur(15px);
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-            filter: blur(0);
-          }
+          0% { transform: translateY(20px); opacity: 0; filter: blur(5px); }
+          100% { transform: translateY(0); opacity: 1; filter: blur(0); }
         }
-        @keyframes kenburns {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.15); }
-        }
-        .animate-slide-in {
-          animation: slideIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        .animate-kenburns {
-          animation: kenburns 7s ease-out forwards;
-        }
-        .delay-100 { animation-delay: 0.15s; }
-        .delay-200 { animation-delay: 0.3s; }
-        .delay-300 { animation-delay: 0.45s; }
+        .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
       `}</style>
     </section>
   );
