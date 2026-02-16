@@ -80,6 +80,7 @@ const Header = () => {
       ]
     },
     { name: 'Blog', link: '/blog' },
+    {name :'enquiry', link: '/enquiry'},
     // UPDATE: target="_blank" is used for the external car rental link
     { name: 'Car Rentals', link: 'https://express-travel-fxaf.onrender.com', isExternal: true },
     { name: 'Services', link: '/services' },
@@ -189,7 +190,7 @@ const Header = () => {
                 </li>
               ))}
               <li className="h-12 flex items-center px-4 bg-gray-50 border-l border-gray-100">
-                <Link to="/contact">
+                <Link to="/enquiry" >
                   <button className="bg-blue-600 text-white py-2 px-5 text-[10px] font-black uppercase flex items-center gap-2 hover:bg-blue-800 transition-all">
                     <Send size={12} /> Enquiry
                   </button>

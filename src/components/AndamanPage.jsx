@@ -45,7 +45,7 @@ const AndamanPage = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full lg:w-1/2 h-[350px] relative rounded-2xl overflow-hidden shadow-2xl"
+            className="w-full lg:w-1/2 h-[350px] relative rounded-none overflow-hidden shadow-2xl"
           >
             <img 
               src="/andaman.jpg" 
@@ -65,7 +65,7 @@ const AndamanPage = () => {
               className="bg-white p-6 border-b-4 border-blue-600 shadow-lg flex flex-col justify-between"
             >
               <div>
-                <div className="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mb-4">
+                <div className="bg-blue-50 w-10 h-10 rounded-none flex items-center justify-center mb-4">
                   <Ship className="text-blue-600" size={20} />
                 </div>
                 <h3 className="text-blue-700 font-black text-xl mb-2">{pkg.duration}</h3>
@@ -99,27 +99,28 @@ const AndamanPage = () => {
               "We would like to appreciate your good office for arranging travel trip to Maldives for our Director, Mr Walfred Tagor..."
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-[10px] font-bold">JM</div>
+              <div className="w-8 h-8 bg-blue-600 rounded-none flex items-center justify-center text-white text-[10px] font-bold">JM</div>
               <p className="font-black text-slate-900 text-[11px] uppercase tracking-wider">Jestin Mathew</p>
             </div>
           </div>
 
-          <div className="lg:col-span-2 bg-blue-900 p-10 flex flex-col justify-center relative overflow-hidden">
-             <div className="absolute right-0 top-0 opacity-10">
-                <Anchor size={200} className="translate-x-10 -translate-y-10 rotate-12 text-white" />
-             </div>
-             <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-4 z-10">
-               Explore <span className="text-cyan-400 text-4xl md:text-5xl">Dream Destination!</span>
-             </h2>
-             <p className="text-blue-200 font-bold italic mb-8 z-10">
-               You'll never forget the experience we are ready to present you!
-             </p>
-             <button className="bg-cyan-500 hover:bg-cyan-600 text-white w-fit px-12 py-4 font-black uppercase tracking-widest text-xs transition-transform hover:scale-105 z-10 shadow-lg">
-               Click Here
-             </button>
+          
+        
+        {/* --- BOTTOM CTA --- */}
+                  <div className="lg:col-span-2 bg-gradient-to-br from-blue-900 to-slate-900 p-12 relative flex flex-col justify-center rounded-none">
+            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
+              Explore Your <br/><span className="text-cyan-400">Dream Destination!</span>
+            </h2>
+            <p className="text-blue-200 font-bold italic mb-8">
+              You'll never forget the experience we are ready to present Joy!
+            </p>
+            <div className="flex gap-4">
+              <button className="bg-white text-slate-900 px-12 py-4 font-black uppercase tracking-widest text-xs hover:bg-cyan-400 transition-all">
+                Click Here
+              </button>
+            </div>
           </div>
-        </div>
-
+</div>
       </div>
     </div>
   );

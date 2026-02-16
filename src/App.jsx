@@ -10,12 +10,17 @@ import AboutPage from './components/AboutPage';
 import Blog from './components/Blog'; 
 import Services from './components/Services';
 import ContactUs from './components/Contact';
+import PaymentPartners from './components/payment';
+import EnquiryPage from './components/enquery'; 
+import FloatingControls from './FloatingIcons';
 //international tour pages
 import AustraliaPage from './components/AustraliaPage';
 import EuropePage from './components/EuropePage';
 import MaldivesPage from './components/MaldivesPage';
 import SouthAfricaPage from './components/SouthAfricaPage';
 import DubaiPage from './components/DubaiPage';
+//detailpages
+import AustraliaDetail from './components/AustraliaDetail';
 //demestic tour pages 
 import AndamanPage from './components/AndamanPage';
 import KeralaPage from './components/KeralaPage';
@@ -72,6 +77,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/enquiry" element={<EnquiryPage />} />
             {/* 2. INTERNATIONAL TOUR ROUTES */}
             
             <Route path="/tours/australia" element={<AustraliaPage />} />
@@ -79,6 +85,9 @@ function App() {
             <Route path="/tours/maldives" element={<MaldivesPage />} />
             <Route path="/tours/south-africa" element={<SouthAfricaPage />} />
             <Route path="/tours/dubai" element={<DubaiPage />} />
+{/* detail TOUR ROUTES */}
+            <Route path="/tours/australia/details" element={<AustraliaDetail />} />
+
             // 3. DOMESTIC TOUR ROUTES
             {/* INDIA TOUR ROUTES */}
         <Route path="/tours/india/andaman" element={<AndamanPage />} />
@@ -95,7 +104,9 @@ function App() {
         <Route path="/tours/india/uttarakhand" element={<UttrakhandPage />} />
           </Routes>
         </main>
+        <PaymentPartners />
         <Footer />
+        <FloatingControls />
       </div>
     </Router>
   );

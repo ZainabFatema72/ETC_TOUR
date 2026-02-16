@@ -108,20 +108,19 @@ const HimachalPage = () => {
         </div>
 
         {/* --- BOTTOM CTA --- */}
-        <div className="bg-gradient-to-r from-blue-900 to-slate-900 p-12 text-center relative overflow-hidden">
-             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <Mountain size={300} className="absolute -left-20 -bottom-20 text-white" />
-             </div>
-             <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 z-10 relative">
-               Explore <span className="text-blue-400">Dream Destination!</span>
-             </h2>
-             <p className="text-blue-200 font-bold italic mb-8 z-10 relative">
-               You'll never forget the experience we are ready to present Joy!
-             </p>
-             <button className="bg-white text-slate-900 px-12 py-4 font-black uppercase tracking-widest text-xs hover:bg-blue-400 hover:text-white transition-all z-10 relative shadow-2xl">
-               Click Here
-             </button>
-        </div>
+                  <div className="lg:col-span-2 bg-gradient-to-br from-blue-900 to-slate-900 p-12 relative flex flex-col justify-center rounded-sm">
+            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
+              Explore Your <br/><span className="text-cyan-400">Dream Destination!</span>
+            </h2>
+            <p className="text-blue-200 font-bold italic mb-8">
+              You'll never forget the experience we are ready to present Joy!
+            </p>
+            <div className="flex gap-4">
+              <button className="bg-white text-slate-900 px-12 py-4 font-black uppercase tracking-widest text-xs hover:bg-cyan-400 transition-all">
+                Click Here
+              </button>
+            </div>
+          </div>
 
       </div>
     </div>
