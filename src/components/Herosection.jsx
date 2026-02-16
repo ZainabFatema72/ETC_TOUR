@@ -12,7 +12,7 @@ const slides = [
     sub: "Escape to God's Own Country. Experience the tranquil backwaters and lush tea plantations."
   },
   {
-    img: "/pondi.jpg",
+    img: "/pondi.webp",
     title: "MUMBAI",
     sub: "Experience the city that never sleeps. From the colonial charm of Gateway of India to the dazzling Queen's Necklace at Marine Drive."
 },
@@ -60,7 +60,7 @@ const Herosection = () => {
         {slides.map((slide, index) => (
           index === current && (
             <div key={index} className="flex flex-col items-center">
-              <span className="text-blue-500 font-black tracking-[0.4em] text-[10px] md:text-xs mb-2 animate-slide-in uppercase">
+              <span className="text-blue-500 font-black tracking-[0.4em] text-[10px] md:text-xs mb-2 animate-slide-in uppercase ">
                 Explore Incredible India
               </span>
               
@@ -70,9 +70,9 @@ const Herosection = () => {
               
               <div className="h-1 w-20 bg-blue-500 my-4 animate-slide-in delay-100"></div>
 
-              <p className="text-gray-200 text-xs md:text-lg max-w-xl font-medium leading-relaxed animate-slide-in delay-200">
-                {slide.sub}
-              </p>
+              <p className="text-gray-100 text-xs md:text-lg max-w-xl font-bold leading-relaxed animate-slide-in delay-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+  {slide.sub}
+</p>
             </div>
           )
         ))}

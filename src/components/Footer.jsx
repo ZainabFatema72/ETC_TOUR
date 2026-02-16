@@ -21,69 +21,69 @@ const Footer = () => {
       background-color: #111827;
       color: #ffffff;
       font-family: 'Inter', sans-serif;
-      padding: 40px 0 0 0;
+      padding: 30px 0 0 0;
       border-top: 1px solid #1f2937;
     }
 
     .footer-grid {
-      max-width: 1550px;
+      max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.4fr 1.1fr 0.8fr 1.6fr 1fr;
-      gap: 40px;
-      padding: 0 60px 60px 60px;
+      grid-template-columns: 1.2fr 1fr 0.7fr 1.3fr 0.8fr;
+      gap: 30px;
+      padding: 0 40px 40px 40px;
       align-items: start;
     }
 
     .footer-column { display: flex; flex-direction: column; }
 
     .logo-wrapper {
-      height: 75px; 
-      margin-bottom: 25px;
+      height: 60px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
     }
 
-    .brand-spacer { height: 75px; margin-bottom: 25px; }
+    .brand-spacer { height: 60px; margin-bottom: 20px; }
 
     .branch-heading-btn {
       display: inline-block;
       background-color: #3b82f6;
       color: white !important;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
-      padding: 10px 18px;
+      padding: 8px 14px;
       border-radius: 4px;
       text-decoration: none;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       width: fit-content;
       transition: 0.3s;
       box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
     }
 
     .column-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: #ffffff;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 25px;
+      letter-spacing: 1.2px;
+      margin-bottom: 18px;
       position: relative;
     }
 
     .column-title::after {
       content: "";
       position: absolute;
-      left: 0; bottom: -8px;
-      width: 25px; height: 2px;
+      left: 0; bottom: -6px;
+      width: 20px; height: 2px;
       background-color: #3b82f6;
     }
 
     .carousel-container {
       position: relative;
-      height: 100px;
+      height: 80px;
       overflow: hidden;
       width: 100%;
     }
@@ -92,65 +92,59 @@ const Footer = () => {
       position: absolute;
       top: 0; left: 0; width: 100%;
       opacity: 0;
-      transform: translateY(15px);
+      transform: translateY(10px);
       transition: all 0.6s ease-in-out;
       visibility: hidden;
     }
 
     .branch-slide.active { opacity: 1; transform: translateY(0); visibility: visible; }
 
-    .contact-item-box { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item-box { display: flex; flex-direction: column; gap: 8px; }
 
-    /* Fix: Contact row alignment */
     .contact-row { 
       display: flex; 
       align-items: flex-start; 
-      gap: 8px; 
+      gap: 6px; 
       width: 100%;
     }
 
-    .contact-label { color: #60a5fa; font-weight: 800; min-width: 85px; font-size: 12.5px; }
+    .contact-label { color: #60a5fa; font-weight: 800; min-width: 75px; font-size: 11.5px; }
+    .contact-data { color: #f1f5f9; font-size: 12px; flex: 1; }
 
-    .contact-data { color: #f1f5f9; font-size: 13px; flex: 1; }
-
-    /* Fix: Email specifically for mobile */
     .email-text {
       color: #3b82f6;
       font-weight: bold;
-      font-size: 13px;
+      font-size: 12px;
       word-break: break-all;
-      display: inline-block;
     }
 
     .social-flex {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 15px;
     }
 
     .social-item {
       background-color: #1f2937;
-      width: 38px;
-      height: 38px;
+      width: 35px; /* Consistent size for all social icons */
+      height: 35px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 8px;
+      border-radius: 6px;
       border: 1px solid #374151;
       transition: 0.3s;
-      text-decoration: none;
     }
 
     .social-item:hover {
       background-color: #3b82f6;
-      border-color: #3b82f6;
       transform: translateY(-3px);
     }
 
     .bottom-bar {
       background-color: #0b0f1a;
-      padding: 20px 60px;
+      padding: 15px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -162,34 +156,24 @@ const Footer = () => {
     }
 
     @media (max-width: 768px) {
+      .information-col { display: none !important; }
+      .footer-wrapper { padding: 20px 0 0 0; }
       .footer-grid { 
         grid-template-columns: 1fr; 
-        padding: 0 30px 40px 30px; 
+        padding: 0 15px 25px 15px; 
         text-align: center;
-        gap: 35px;
+        gap: 18px;
       }
       .footer-column { align-items: center; }
-      .brand-spacer, .logo-wrapper { height: auto; margin-bottom: 20px; }
+      .brand-spacer, .logo-wrapper { height: auto; margin-bottom: 10px; }
       .column-title::after { left: 50%; transform: translateX(-50%); }
-      
-      /* Center all rows on mobile */
-      .contact-row { 
-        justify-content: center; 
-        text-align: left; 
-        max-width: 320px; 
-        margin: 0 auto; 
-      }
-      
-      .social-flex { justify-content: center; }
-      .bottom-bar { flex-direction: column; gap: 20px; text-align: center; }
-      
-      .carousel-container { height: auto; min-height: 120px; }
-      .address-wrap { display: block; max-width: 100%; word-wrap: break-word; }
-      
-      /* Email mobile adjustment */
-      .email-text {
-        word-break: break-word; /* Better for reading on phones */
-      }
+      .contact-item-box { align-items: center; width: 100%; }
+      .contact-row { justify-content: flex-start; max-width: 280px; margin: 0 auto; text-align: left; }
+      .contact-label { min-width: 70px; font-size: 10.5px; }
+      .contact-data { font-size: 11px; }
+      .bottom-bar { padding: 15px 20px; flex-direction: column; gap: 12px; text-align: center; }
+      .copyright-text { font-size: 10px !important; line-height: 1.5; order: 1; }
+      .powered-by-box { order: 2; justify-content: center; }
     }
   `;
 
@@ -199,81 +183,60 @@ const Footer = () => {
       <footer className="footer-wrapper">
         <div className="footer-grid">
           
-          {/* Identity */}
           <div className="footer-column">
             <div className="logo-wrapper">
-              <img src="/logo footer2.jpg" alt="Express Travel Logo" style={{ height: '75px', filter: 'brightness(1.2)', objectFit: 'contain' }} />
+              <img src="/logo footer2.jpg" alt="Logo" style={{ height: '50px', filter: 'brightness(1.2)', objectFit: 'contain' }} />
             </div>
             <h3 className="column-title">Head Office</h3>
-            <div style={{ marginBottom: '10px' }}>
-              <b style={{ color: '#fff', fontSize: '13px' }}>EXPRESS TRAVEL CORPORATE SERVICES LLP</b><br />
-              <span className="address-wrap" style={{ color: '#94a3b8', fontSize: '12.5px', lineHeight: '1.6' }}>
-                New No.21, (Old No.12), New Tank Street,<br />
+            <div>
+              <b style={{ color: '#fff', fontSize: '12px' }}>EXPRESS TRAVEL CORPORATE SERVICES LLP</b><br />
+              <span style={{ color: '#94a3b8', fontSize: '11px', lineHeight: '1.4' }}>
+                New No.21, New Tank Street,<br />
                 Nungambakkam, Chennai – 600 034.<br />
                 Tamilnadu, INDIA.
               </span>
             </div>
           </div>
 
-          {/* Branches Carousel */}
           <div className="footer-column">
             <div className="brand-spacer"></div>
-            <a href="#contact-us" className="branch-heading-btn">Our Branches</a>
+            <a href="/contact" className="branch-heading-btn">Our Branches</a>
             <div className="carousel-container">
               {branches.map((branch, index) => (
                 <div key={index} className={`branch-slide ${index === activeBranch ? 'active' : ''}`}>
-                  <span style={{ color: '#fff', fontWeight: '800', fontSize: '12px' }}>{branch.city}</span><br/>
-                  <span className="address-wrap" style={{ color: '#94a3b8', fontSize: '11.5px', lineHeight: '1.5' }}>
-                    {branch.addr}
-                  </span>
+                  <span style={{ color: '#fff', fontWeight: '800', fontSize: '10.5px' }}>{branch.city}</span><br/>
+                  <span style={{ color: '#94a3b8', fontSize: '10.5px', lineHeight: '1.3' }}>{branch.addr}</span>
                 </div>
               ))}
             </div>
-            <div style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', gap: '4px', marginTop: '6px', justifyContent: 'center' }}>
               {branches.map((_, i) => (
-                <div key={i} style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: i === activeBranch ? '#3b82f6' : '#374151' }} />
+                <div key={i} style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: i === activeBranch ? '#3b82f6' : '#374151' }} />
               ))}
             </div>
           </div>
 
-          {/* Information */}
-          <div className="footer-column">
+          <div className="footer-column information-col">
             <div className="brand-spacer"></div>
             <h3 className="column-title">Information</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              <li style={{marginBottom: '10px'}}><a href="/about" style={{fontSize: '13px', color: '#f1f5f9', textDecoration: 'none'}}>› ABOUT US</a></li>
-              <li style={{marginBottom: '10px'}}><a href="/services" style={{fontSize: '13px', color: '#f1f5f9', textDecoration: 'none'}}>› SERVICES</a></li>
-              <li style={{marginBottom: '10px'}}><a href="/contact" style={{fontSize: '13px', color: '#f1f5f9', textDecoration: 'none'}}>› CONTACT US</a></li>
+              <li style={{marginBottom: '8px'}}><a href="/about" style={{fontSize: '12px', color: '#f1f5f9', textDecoration: 'none'}}>› ABOUT US</a></li>
+              <li style={{marginBottom: '8px'}}><a href="/services" style={{fontSize: '12px', color: '#f1f5f9', textDecoration: 'none'}}>› SERVICES</a></li>
+              <li style={{marginBottom: '8px'}}><a href="/contact" style={{fontSize: '12px', color: '#f1f5f9', textDecoration: 'none'}}>› CONTACT US</a></li>
             </ul>
           </div>
 
-          {/* Contact Us - ALIGNMENT FIXED */}
           <div className="footer-column" id="contact-us">
             <div className="brand-spacer"></div>
             <h3 className="column-title">Contact Us</h3>
             <div className="contact-item-box">
-              <div className="contact-row">
-                <span className="contact-label">Phone:</span>
-                <span className="contact-data">+91-44-2827 2279</span>
-              </div>
-              <div className="contact-row">
-                <span className="contact-label">Tours:</span>
-                <span className="contact-data">Mr. Mohan (+91 97910 07710)</span>
-              </div>
-              <div className="contact-row">
-                <span className="contact-label">Transport:</span>
-                <span className="contact-data">Mr. Suresh (+91 98408 87777)</span>
-              </div>
-              <div className="contact-row">
-                <span className="contact-label">Email:</span>
-                <span className="contact-data">
-                    <span className="email-text">enquiry@expresstravelcorp.com</span>
-                </span>
-              </div>
+              <div className="contact-row"><span className="contact-label">Phone:</span><span className="contact-data">+91-44-2827 2279</span></div>
+              <div className="contact-row"><span className="contact-label">Tours:</span><span className="contact-data">Mr. Mohan (+91 97910 07710)</span></div>
+              <div className="contact-row"><span className="contact-label">Transport:</span><span className="contact-data">Mr. Suresh (+91 98408 87777)</span></div>
+              <div className="contact-row"><span className="contact-label">Email:</span><span className="contact-data email-text">enquiry@expresstravelcorp.com</span></div>
             </div>
           </div>
 
-          {/* Connect Column */}
           <div className="footer-column">
             <div className="brand-spacer"></div>
             <h3 className="column-title">Connect</h3>
@@ -281,31 +244,24 @@ const Footer = () => {
               <a href="https://www.facebook.com/touroperatorsinchennai/" target="_blank" rel="noreferrer" className="social-item">
                 <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-2.21c0-.837.398-1.29 1.144-1.29h2.856v-4.21h-3.856c-3.103 0-5.144 1.822-5.144 4.997v2.713z"/></svg>
               </a>
-              <a href="https://workspaceupdates.googleblog.com" target="_blank" rel="noreferrer" className="social-item">
-                <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42s1.95-4.42 4.34-4.42c1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61z"/></svg>
+              {/* Google/Blog Icon Size Fixed to 20x20 */}
+              <a href="https://workspaceupdates.googleblog.com/2023/04/new-community-features-for-google-chat-and-an-update-currents%20.html" target="_blank" rel="noreferrer" className="social-item">
+                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42s1.95-4.42 4.34-4.42c1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61z"/></svg>
               </a>
-              <a href="#" className="social-item">
-                <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-              </a>
-              <a href="#" className="social-item">
-                <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="social-item">
+                <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
             </div>
-            <p style={{ fontSize: '10px', marginTop: '10px', color: '#60a5fa', fontWeight: '900', letterSpacing: '2px' }}>
-               EXCELLENCE SINCE 1999
-            </p>
+            <p style={{ fontSize: '8.5px', marginTop: '4px', color: '#60a5fa', fontWeight: '900', letterSpacing: '1px' }}>EXCELLENCE SINCE 1999</p>
           </div>
-
         </div>
 
         <div className="bottom-bar">
-          <div style={{ fontSize: '12px', color: '#94a3b8' }}>
-            Copyright © 2026. EXPRESS TRAVEL CORPORATE SERVICES LLP. All Rights Reserved.
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <span style={{ fontSize: '10px', color: '#475569', fontWeight: '700' }}>POWERED BY</span>
+          <div style={{ fontSize: '11px', color: '#94a3b8' }}>Copyright © 2026. EXPRESS TRAVEL CORPORATE SERVICES LLP. All Rights Reserved.</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '8px', color: '#475569', fontWeight: '700' }}>POWERED BY</span>
             <a href="https://royalswebtechpvtltd.com/" target="_blank" rel="noreferrer">
-              <img src='/rwtlogo.png' alt="Powered By" style={{ height: '32px', filter: 'brightness(1.1)' }} />
+              <img src='/rwtlogo.png' alt="RWT" style={{ height: '30px', filter: 'brightness(1.1)' }} />
             </a>
           </div>
         </div>

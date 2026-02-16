@@ -1,67 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//international tour pages
-import AustraliaPage from './AustraliaPage';
-import EuropePage from './EuropePage';
-import MaldivesPage from './MaldivesPage';
-import SouthAfricaPage from './SouthAfricaPage';
-import DubaiPage from './DubaiPage';
-//domestic tour pages
-import AndamanPage from './AndamanPage';
-import KeralaPage from './KeralaPage';
-import KashmirPage from './KashmirPage';
-import GoaPage from './GoaPage';
-import HimachalPage from './HimachalPage';
-import TamilNaduPage from './TamilNaduPage';  
-import AndhraPage from './AndhraPage';  
-import KarnatakaPage from './KarnatakaPage';
-import MaharashtraPage from './MaharashtraPage';
-import SikkimPage from './SikkimPage';
-import NorthEastPage from './NorthEastPage';
-import UttarakhandPage from './UttarakhandPage';
-import { ChevronDown, Menu, Globe, Send, X, CreditCard } from 'lucide-react';
-
-function App() {
-  return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tours/australia" element={<AustraliaPage />} />
-        <Route path="/tours/europe" element={<EuropePage />} />
-        <Route path="/tours/maldives" element={<MaldivesPage />} />
-        <Route path="/tours/south-africa" element={<SouthAfricaPage />} />
-        <Route path="/tours/dubai" element={<DubaiPage />} />
-        // 3. DOMESTIC TOUR ROUTES
-        <Route path="/tours/india/andaman" element={<AndamanPage />} />
-        <Route path="/tours/india/kerala" element={<KeralaPage />} />
-        <Route path="/tours/india/kashmir" element={<KashmirPage />} />
-        <Route path="/tours/india/goa" element={<GoaPage />} />
-        <Route path="/tours/india/himachal" element={<HimachalPage />} />
-        <Route path="/tours/india/tamil" element={<TamilNaduPage />} />
-        <Route path="/tours/india/andhra" element={<AndhraPage />} />
-        <Route path="/tours/india/karnataka" element={<KarnatakaPage />} />
-        <Route path="/tours/india/maharashtra" element={<MaharashtraPage />} />
-        <Route path="/tours/india/sikkim" element={<SikkimPage />} />
-        <Route path="/tours/india/north" element={<NorthEastPage />} />
-        <Route path="/tours/india/uttarakhand" element={<UttarakhandPage />} />
-      </Routes>
-      <Footer />
-    </Router>
-  );
-}
+import { Link } from 'react-router-dom';
+import { ChevronDown, Menu, Globe, Send, X, CreditCard, ChevronRight } from 'lucide-react';
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [langDropdown, setLangDropdown] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(null);
   
   const langRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (window.innerWidth >= 1280) {
+        setIsScrolled(window.scrollY > 50);
+      } else {
+        setIsScrolled(false); 
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -87,27 +43,31 @@ const Header = () => {
     }
   };
 
+  const toggleMobileSubmenu = (itemName) => {
+    setMobileSubmenuOpen(mobileSubmenuOpen === itemName ? null : itemName);
+  };
+
   const menuItems = [
     { name: 'Home', link: '/' },
     { name: 'About Us', link: '/about' },
-  {
-  name: 'India Tours',
-  link: '#',
-  submenu: [
-    { name: 'Andaman Island - Emerald. Blue And You', path: '/tours/india/andaman' },
-    { name: 'Andhra Pradesh & Telangana', path: '/tours/india/andhra-pradesh' },
-    { name: 'Enchanting Tamil Nadu', path: '/tours/india/tamil-nadu' },
-    { name: 'Goa - A Perfect Holiday Destination', path: '/tours/india/goa' },
-    { name: 'Himachal Pradesh - The Land Of Gods', path: '/tours/india/himachal' },
-    { name: 'Karnataka - One State, Many Worlds', path: '/tours/india/karnataka' },
-    { name: 'Kashmir - The Earth Heaven', path: '/tours/india/kashmir' },
-    { name: 'Kerala - God\'s Own Country', path: '/tours/india/kerala' },
-    { name: 'Maharashtra - Unlimited', path: '/tours/india/maharashtra' },
-    { name: 'North East Package', path: '/tours/india/north-east' },
-    { name: 'Sikkim - Small But Beautiful', path: '/tours/india/sikkim' },
-    { name: 'Uttarakhand - Simply Heaven', path: '/tours/india/uttarakhand' }
-  ]
-},
+    {
+      name: 'India Tours',
+      link: '#',
+      submenu: [
+        { name: 'Andaman Island - Emerald. Blue And You', path: '/tours/india/andaman' },
+        { name: 'Andhra Pradesh & Telangana', path: '/tours/india/andhra-pradesh' },
+        { name: 'Enchanting Tamil Nadu', path: '/tours/india/tamil-nadu' },
+        { name: 'Goa - A Perfect Holiday Destination', path: '/tours/india/goa' },
+        { name: 'Himachal Pradesh - The Land Of Gods', path: '/tours/india/himachal' },
+        { name: 'Karnataka - One State, Many Worlds', path: '/tours/india/karnataka' },
+        { name: 'Kashmir - The Earth Heaven', path: '/tours/india/kashmir' },
+        { name: 'Kerala - God\'s Own Country', path: '/tours/india/kerala' },
+        { name: 'Maharashtra - Unlimited', path: '/tours/india/maharashtra' },
+        { name: 'North East Package', path: '/tours/india/north-east' },
+        { name: 'Sikkim - Small But Beautiful', path: '/tours/india/sikkim' },
+        { name: 'Uttarakhand - Simply Heaven', path: '/tours/india/uttarakhand' }
+      ]
+    },
     {
       name: 'International',
       link: '#',
@@ -120,6 +80,7 @@ const Header = () => {
       ]
     },
     { name: 'Blog', link: '/blog' },
+    // UPDATE: target="_blank" is used for the external car rental link
     { name: 'Car Rentals', link: 'https://express-travel-fxaf.onrender.com', isExternal: true },
     { name: 'Services', link: '/services' },
     { name: 'Contact', link: '/contact' }
@@ -130,40 +91,51 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 font-sans">
       
-      {/* BRANDING BAR */}
-      <div className={`bg-white px-4 md:px-8 shadow-sm transition-all duration-500 overflow-visible ${
-          isScrolled ? 'max-h-0 opacity-0 invisible py-0' : 'max-h-[150px] py-4 opacity-100 visible'
+      {/* LAYER 1: BRANDING BAR */}
+      <div 
+        className={`bg-white px-2 md:px-8 shadow-sm transition-all duration-500 overflow-visible pointer-events-auto ${
+          isScrolled 
+            ? 'xl:max-h-0 xl:opacity-0 xl:invisible xl:py-0' 
+            : 'max-h-[200px] py-2 md:py-4 opacity-100 visible'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-4 shrink-0 cursor-pointer">
-            <img src="/LOGO.jpg" alt="Logo" className="h-12 md:h-16 w-auto object-contain" />
-            <div className="flex flex-col border-l-2 border-blue-900 pl-3">
-              <span className="text-[18px] md:text-[24px] font-black tracking-tighter text-blue-900 leading-none">EXPRESS TRAVEL</span>
-              <span className="text-[9px] md:text-[12px] font-bold text-blue-600 uppercase mt-1">Corporate Services LLP</span>
+        <div className="max-w-[1440px] mx-auto flex justify-between items-center gap-1 md:gap-4">
+          
+          <Link to="/" className="flex items-center gap-1 md:gap-4 shrink-0 min-w-0 cursor-pointer">
+            <img src="/LOGO.jpg" alt="Logo" className="h-8 md:h-16 w-auto object-contain flex-shrink-0" />
+            <div className="flex flex-col border-l-2 border-blue-900 pl-1.5 md:pl-3 overflow-hidden">
+              <span className="text-[11px] md:text-[24px] font-black tracking-tighter text-blue-900 leading-none uppercase truncate">Express Travel</span>
+              <span className="text-[6px] md:text-[12px] font-bold text-blue-600 uppercase mt-0.5 md:mt-1 truncate">Corporate Services LLP</span>
             </div>
           </Link>
 
-          <div className="flex items-center gap-6">
-            <div className="hidden sm:flex flex-col items-center gap-2">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 flex items-center gap-2 shadow-md transition-all">
-                <CreditCard size={14} />
-                <span className="text-[10px] font-black uppercase tracking-wider">Make Payment Online</span>
+          <div className="flex items-center gap-1 md:gap-6 shrink-0">
+            <div className="flex items-center gap-1 md:gap-2">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white w-12 h-10 md:w-20 md:h-14 flex flex-col items-center justify-center shadow-sm md:shadow-md transition-all rounded-sm group flex-shrink-0">
+                <CreditCard size={12} className="md:size-5" />
+                <span className="text-[5px] md:text-[8px] font-black uppercase text-center leading-tight mt-0.5 md:mt-1">Pay Online</span>
               </button>
 
-              <div className="relative" ref={langRef}>
-                <button onClick={() => setLangDropdown(!langDropdown)}
-                  className="flex items-center gap-2 text-blue-600 font-bold text-[10px] uppercase tracking-widest bg-blue-50 px-3 py-1 border border-blue-100">
-                  <Globe size={12} /> 
-                  <span>Select Language</span>
-                  <ChevronDown size={10} className={`transition-transform ${langDropdown ? 'rotate-180' : ''}`} />
+              <div className="relative flex-shrink-0" ref={langRef}>
+                <button 
+                  onClick={() => setLangDropdown(!langDropdown)}
+                  className={`flex flex-col items-center justify-center w-12 h-10 md:w-20 md:h-14 transition-all rounded-sm border ${
+                    langDropdown ? 'bg-blue-600 text-white border-blue-600' : 'text-blue-600 border-blue-100 bg-blue-50 hover:bg-blue-100'
+                  }`}
+                >
+                  <Globe size={12} className="md:size-5" /> 
+                  <div className="flex items-center gap-0.5 md:gap-1 mt-0.5 md:mt-1">
+                    <span className="text-[5px] md:text-[8px] font-black uppercase text-center leading-tight">Language</span>
+                    <ChevronDown size={7} className={`transition-transform md:size-2 ${langDropdown ? 'rotate-180' : ''}`} />
+                  </div>
                 </button>
+                
                 {langDropdown && (
-                  <div className="absolute top-full right-0 w-48 bg-white shadow-2xl border border-gray-100 z-[100] mt-1">
+                  <div className="absolute top-[105%] right-0 w-32 md:w-48 bg-white shadow-2xl border border-gray-100 z-[100] mt-1 animate-in fade-in duration-200">
+                    <div className="bg-blue-600 h-1 w-full"></div>
                     <ul className="max-h-60 overflow-y-auto py-1 custom-scrollbar">
                       {languages.map((lang, idx) => (
-                        <li key={idx} onClick={() => setLangDropdown(false)}
-                          className="px-4 py-2.5 text-[11px] font-bold text-gray-600 hover:bg-blue-600 hover:text-white border-b border-gray-50 last:border-0 cursor-pointer uppercase transition-colors">
+                        <li key={idx} onClick={() => setLangDropdown(false)} className="px-3 md:px-4 py-2 text-[9px] md:text-[11px] font-bold text-gray-700 hover:bg-blue-600 hover:text-white border-b border-gray-50 last:border-0 cursor-pointer uppercase transition-colors">
                           {lang}
                         </li>
                       ))}
@@ -173,7 +145,7 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="hidden md:flex flex-col items-end border-l pl-6 border-gray-100">
+            <div className="hidden xl:flex flex-col items-end border-l pl-6 border-gray-100">
               <span className="text-[20px] font-black text-blue-900 leading-none uppercase tracking-tight">
                 Incredible <span className="text-blue-600">!</span>ndia
               </span>
@@ -182,60 +154,47 @@ const Header = () => {
               </p>
             </div>
 
-            {/* HAMBURGER BUTTON */}
-            <button className="xl:hidden p-2 text-blue-900" onClick={() => setIsMobileMenuOpen(true)}>
-              <Menu size={32} />
+            <button className="xl:hidden p-1 text-blue-900 flex-shrink-0" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu size={24} className="md:size-8" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* DESKTOP NAVBAR */}
+      {/* LAYER 2: DESKTOP NAVBAR */}
       <div className={`hidden xl:flex justify-center px-4 transition-all duration-300 ${isScrolled ? 'mt-4' : 'mt-2'}`}>
-        <div className="bg-white shadow-xl border border-gray-100 flex items-center h-12 max-w-fit px-2">
+        <div className="bg-white shadow-xl border border-gray-100 flex items-center h-12 max-w-fit px-2 pointer-events-auto">
           <nav className="flex items-center h-full">
             <ul className="flex items-center h-full">
               {menuItems.map((item, index) => (
-                <li key={index} className="relative group h-12 flex items-center px-5 border-r border-gray-100 last:border-0"
-                  onMouseEnter={() => setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}>
-                  
+                <li key={index} className="relative group h-12 flex items-center px-5 border-r border-gray-100 last:border-0" onMouseEnter={() => setActiveDropdown(item.name)} onMouseLeave={() => setActiveDropdown(null)}>
+                  {/* UPDATE: External links now open in a new tab */}
                   {item.isExternal ? (
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 hover:text-blue-600 transition-all">
                       {item.name}
                     </a>
-                  ) : item.link && item.link.startsWith('#') ? (
-                    <a href={item.link} onClick={(e) => handleScrollToSection(e, item.link)} className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 hover:text-blue-600 transition-all">
-                      {item.name}
-                      {item.submenu && <ChevronDown size={14} className="opacity-40" />}
-                    </a>
                   ) : (
-                    <Link to={item.link || '/'} className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 hover:text-blue-600 transition-all">
+                    <Link to={item.link && !item.link.startsWith('#') ? item.link : '#'} onClick={(e) => item.link && item.link.startsWith('#') && handleScrollToSection(e, item.link)} className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 hover:text-blue-600 transition-all">
                       {item.name}
                       {item.submenu && <ChevronDown size={14} className="opacity-40" />}
                     </Link>
                   )}
-
-                  {/* DESKTOP SUBMENU FIX */}
                   {item.submenu && activeDropdown === item.name && (
                     <ul className="absolute top-12 left-0 w-72 bg-white shadow-2xl border-t-4 border-blue-600 py-2 z-[60]">
                       {item.submenu.map((sub, i) => (
-                        <li key={i}>
-                          {typeof sub === 'object' ? (
-                            <Link to={sub.path} className="block px-6 py-2.5 text-[11px] font-bold text-slate-600 hover:bg-blue-50 border-b border-gray-50 last:border-0 uppercase transition-colors">
-                              {sub.name}
-                            </Link>
-                          ) : (
-                            <span className="block px-6 py-2.5 text-[11px] font-bold text-slate-600 hover:bg-blue-50 border-b border-gray-50 last:border-0 uppercase cursor-pointer">
-                              {sub}
-                            </span>
-                          )}
-                        </li>
+                        <li key={i}><Link to={sub.path} className="block px-6 py-2.5 text-[11px] font-bold text-slate-600 hover:bg-blue-50 border-b border-gray-50 last:border-0 uppercase transition-colors">{sub.name}</Link></li>
                       ))}
                     </ul>
                   )}
                 </li>
               ))}
+              <li className="h-12 flex items-center px-4 bg-gray-50 border-l border-gray-100">
+                <Link to="/contact">
+                  <button className="bg-blue-600 text-white py-2 px-5 text-[10px] font-black uppercase flex items-center gap-2 hover:bg-blue-800 transition-all">
+                    <Send size={12} /> Enquiry
+                  </button>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -243,42 +202,58 @@ const Header = () => {
 
       {/* MOBILE MENU DRAWER */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[200] bg-white w-full h-full flex flex-col p-6 overflow-y-auto xl:hidden">
-          <div className="flex justify-between items-center mb-10">
+        <div className="fixed inset-0 z-[200] bg-white w-full h-full flex flex-col p-6 overflow-y-auto xl:hidden animate-in fade-in slide-in-from-right duration-300">
+          <div className="flex justify-between items-center mb-8">
             <img src="/LOGO.jpg" alt="Logo" className="h-10 w-auto" />
-            <button onClick={() => setIsMobileMenuOpen(false)} className="text-blue-900">
-              <X size={35} />
+            <button onClick={() => setIsMobileMenuOpen(false)} className="text-blue-900 bg-blue-50 p-2 rounded-full">
+              <X size={28} />
             </button>
           </div>
-          <nav className="flex flex-col gap-5">
+          
+          <nav className="flex flex-col gap-2">
             {menuItems.map((item, idx) => (
-              <div key={idx} className="border-b border-gray-100 pb-3">
-                <div className="flex justify-between items-center">
-                  <Link 
-                    to={item.link !== '#' ? item.link : ''} 
-                    onClick={() => !item.submenu && setIsMobileMenuOpen(false)}
-                    className="text-lg font-black text-blue-900 uppercase tracking-tight"
-                  >
-                    {item.name}
-                  </Link>
+              <div key={idx} className="flex flex-col border-b border-gray-50">
+                <div className="flex justify-between items-center py-4">
+                  {item.submenu ? (
+                    <button onClick={() => toggleMobileSubmenu(item.name)} className="flex justify-between items-center w-full text-left">
+                      <span className={`text-[15px] font-black uppercase tracking-tight ${mobileSubmenuOpen === item.name ? 'text-blue-600' : 'text-blue-900'}`}>
+                        {item.name}
+                      </span>
+                      <ChevronRight size={20} className={`text-blue-600 transition-transform duration-300 ${mobileSubmenuOpen === item.name ? 'rotate-90' : ''}`} />
+                    </button>
+                  ) : (
+                    /* UPDATE: External links in mobile menu also open in a new tab */
+                    <a 
+                      href={item.link} 
+                      target={item.isExternal ? "_blank" : "_self"} 
+                      rel="noopener noreferrer" 
+                      onClick={() => setIsMobileMenuOpen(false)} 
+                      className="text-[15px] font-black text-blue-900 uppercase tracking-tight w-full"
+                    >
+                      {item.name}
+                    </a>
+                  )}
                 </div>
                 {item.submenu && (
-                  <div className="mt-3 flex flex-col gap-2 pl-4 border-l-2 border-blue-600">
-                    {item.submenu.map((sub, i) => (
-                      <Link 
-                        key={i} 
-                        to={typeof sub === 'object' ? sub.path : '#'} 
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-[11px] font-bold text-gray-500 uppercase py-1"
-                      >
-                        {typeof sub === 'object' ? sub.name : sub}
-                      </Link>
-                    ))}
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileSubmenuOpen === item.name ? 'max-h-[1000px] mb-4' : 'max-h-0'}`}>
+                    <div className="flex flex-col gap-1 pl-4 border-l-2 border-blue-600 bg-blue-50/30 rounded-r-md py-2">
+                      {item.submenu.map((sub, i) => (
+                        <Link key={i} to={sub.path} onClick={() => setIsMobileMenuOpen(false)} className="text-[11px] font-bold text-gray-500 uppercase py-2.5 px-2 hover:text-blue-600">
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
             ))}
           </nav>
+          
+          <div className="mt-10">
+             <button className="w-full bg-blue-600 text-white py-4 rounded-md flex items-center justify-center gap-3 font-bold uppercase text-xs shadow-lg">
+                <CreditCard size={18} /> Make Payment Online
+             </button>
+          </div>
         </div>
       )}
 

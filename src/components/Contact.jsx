@@ -7,7 +7,6 @@ const ContactUs = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Updated branches with specific images from your public folder
   const branches = [
     { 
       city: "New Delhi", 
@@ -29,42 +28,44 @@ const ContactUs = () => {
   return (
     <div className="bg-[#fcfdfe] min-h-screen font-sans text-slate-800 pt-16 overflow-hidden">
       
-      {/* --- SECTION 1: HERO SECTION WITH IMAGE BACKGROUND --- */}
-      <div className="relative bg-[#0f172a] pt-20 pb-32 px-6 overflow-hidden flex items-center justify-center">
+      {/* --- SECTION 1: HERO SECTION (Updated to 75vh/95vh) --- */}
+      <div className="relative w-full h-[75vh] md:h-[8
+      
+      5vh] bg-[#0f172a] overflow-hidden flex items-center justify-center">
         <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-200"
-          style={{ backgroundImage: "url('/Kerala.jpeg')" }}
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40" 
+          style={{ backgroundImage: "url('/contact1.jpeg')" }}
         ></div>
 
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: "radial-gradient(#3b82f6 1px, transparent 1px)", backgroundSize: "40px 40px" }}></div>
         
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0f172a]/90 via-[#0f172a]/50 to-[#fcfdfe]"></div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0f172a]/70 via-transparent to-transparent"></div>
 
-        <div className="relative z-20 text-center max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex flex-col items-center mb-6 px-6 py-1.5 border border-white/10 backdrop-blur-md bg-white/5">
-            <span className="text-white font-serif text-2xl font-bold tracking-tight italic">
+        <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex flex-col items-center mb-8 px-5 py-1.4 border border-white/10 backdrop-blur-md bg-white/5 mt-6 md:mt-8">
+            <span className="text-white font-serif text-xl md:text-2xl font-bold tracking-tight italic">
               Incredible <span className="text-blue-500 font-sans not-italic">!</span>ndia
             </span>
-            <span className="text-[8px] text-blue-400 font-black uppercase tracking-[0.3em] mt-1">Recognized by Ministry of Tourism</span>
+            <span className="text-[7px] md:text-[8px] text-blue-400 font-black uppercase tracking-[0.3em] mt-1">Recognized by Ministry of Tourism</span>
           </motion.div>
 
-          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase italic leading-none drop-shadow-2xl">
+          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic leading-none drop-shadow-2xl">
             Connect <br /> <span className="text-blue-600 not-italic">With Us</span>
           </motion.h1>
         </div>
       </div>
 
       {/* --- FLOATING STATS --- */}
-      <div className="max-w-4xl mx-auto px-6 -mt-10 relative z-40 grid grid-cols-2 md:grid-cols-4 gap-1">
+      <div className="max-w-4xl mx-auto px-6 -mt-8 relative z-40 grid grid-cols-2 md:grid-cols-4 gap-1">
         {[
-          { icon: <Clock size={14}/>, label: "24/7 Support" },
-          { icon: <Globe size={14}/>, label: "Pan India" },
-          { icon: <ShieldCheck size={14}/>, label: "Secured" },
-          { icon: <Star size={14}/>, label: "Premium" }
+          { icon: <Clock size={12}/>, label: "24/7 Support" },
+          { icon: <Globe size={12}/>, label: "Pan India" },
+          { icon: <ShieldCheck size={12}/>, label: "Secured" },
+          { icon: <Star size={12}/>, label: "Premium" }
         ].map((stat, i) => (
-          <div key={i} className="bg-white/95 backdrop-blur-xl p-3 border border-slate-100 shadow-lg flex items-center justify-center gap-2">
+          <div key={i} className="bg-white/95 backdrop-blur-xl p-2.5 border border-slate-100 shadow-lg flex items-center justify-center gap-2">
             <div className="text-blue-600">{stat.icon}</div>
-            <span className="text-[8px] font-black uppercase tracking-widest text-slate-500">{stat.label}</span>
+            <span className="text-[7px] font-black uppercase tracking-widest text-slate-500">{stat.label}</span>
           </div>
         ))}
       </div>
@@ -125,30 +126,16 @@ const ContactUs = () => {
           </div>
         </div>
 
-        {/* --- ACTUAL NUNGAMBAKKAM MAP SECTION --- */}
-        <div className="mt-12 relative group overflow-hidden border-8 border-white shadow-2xl h-[450px]">
+        {/* --- MAP SECTION --- */}
+        <div className="mt-12 relative group overflow-hidden border-8 border-white shadow-2xl h-[400px]">
           <iframe 
-            src="https://www.google.com/maps/@13.07795,80.241986,17z?hl=en&entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D" 
+            src="http://googleusercontent.com/maps.google.com/6" 
             width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" 
             className="grayscale group-hover:grayscale-0 transition-all duration-1000"
           ></iframe>
-          
-          <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-5 shadow-2xl border-l-4 border-blue-600 max-w-[280px]">
-            <span className="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-1">Live Navigation</span>
-            <p className="text-[11px] font-bold text-slate-900 leading-tight uppercase italic mb-3">
-              No.21, New Tank Street, Tirumurthy Nagar, Nungambakkam. Open 24 Hours.
-            </p>
-            <a 
-              href="https://www.google.com/maps/@13.07795,80.241986,17z?hl=en&entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D" 
-              target="_blank" rel="noreferrer"
-              className="bg-slate-900 text-white p-3 flex items-center justify-center gap-2 text-[9px] font-black uppercase hover:bg-blue-600 transition-colors"
-            >
-              <Navigation size={12}/> View on Google Maps
-            </a>
-          </div>
         </div>
 
-        {/* --- REGIONAL OFFICES WITH IMAGE BACKGROUNDS --- */}
+        {/* --- REGIONAL OFFICES --- */}
         <div className="mt-12">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-black uppercase italic tracking-tighter">Regional <span className="text-blue-600">Network</span></h2>
@@ -160,26 +147,21 @@ const ContactUs = () => {
               <motion.div 
                 key={idx} 
                 whileHover={{ y: -5 }} 
-                className="relative h-80 overflow-hidden shadow-lg border-b-8 border-blue-600 group"
+                className="relative h-72 overflow-hidden shadow-lg border-b-8 border-blue-600 group"
               >
-                {/* Background Image with Low Opacity */}
                 <div 
-                  className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 transition-transform duration-500 group-hover:scale-110"
+                  className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 transition-transform duration-500 group-hover:scale-110" 
                   style={{ backgroundImage: `url('${branch.image}')` }}
                 ></div>
 
-                {/* Dark Shadow Gradient for Bottom-up Text Visibility */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
 
-                <div className="relative z-20 h-full p-8 flex flex-col justify-end text-white">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 rounded-sm border border-white/30">
-                    <MapPin size={24} className="text-white" />
-                  </div>
-                  <h4 className="font-black text-xl uppercase mb-2 italic tracking-tight">{branch.city}</h4>
-                  <p className="text-[10px] leading-relaxed font-bold uppercase mb-4 opacity-90">{branch.address}</p>
-                  <div className="pt-3 border-t border-white/20 flex items-center justify-between text-blue-400 font-black text-[9px] uppercase tracking-widest cursor-pointer group-hover:text-white transition-colors">
+                <div className="relative z-20 h-full p-6 flex flex-col justify-end text-white">
+                  <h4 className="font-black text-lg uppercase mb-1 italic tracking-tight">{branch.city}</h4>
+                  <p className="text-[9px] leading-relaxed font-bold uppercase mb-3 opacity-90">{branch.address}</p>
+                  <div className="pt-2 border-t border-white/20 flex items-center justify-between text-blue-400 font-black text-[8px] uppercase tracking-widest cursor-pointer group-hover:text-white transition-colors">
                     <span>Contact Branch</span>
-                    <Globe size={14} className="group-hover:rotate-12 transition-transform"/>
+                    <Globe size={12}/>
                   </div>
                 </div>
               </motion.div>

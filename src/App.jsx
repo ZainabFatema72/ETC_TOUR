@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Tour from './components/Tour';
 import Herosection from './components/Herosection';
@@ -9,7 +9,7 @@ import Fleet from './components/Fleet';
 import AboutPage from './components/AboutPage';
 import Blog from './components/Blog'; 
 import Services from './components/Services';
-import ContactUs from './Contact';
+import ContactUs from './components/Contact';
 //international tour pages
 import AustraliaPage from './components/AustraliaPage';
 import EuropePage from './components/EuropePage';
@@ -29,9 +29,20 @@ import MaharashtraPage from './components/MaharashtraPage';
 import SikkimPage from './components/SikkimPage';
 import NorthEastPage from './components/NorthEastPage'; 
 import UttrakhandPage from './components/UttarakhandPage'; 
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]); // Jab bhi pathname (URL) badlega, ye top par bhej dega
+
+  return null;
+}
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-white font-sans text-slate-800">
         <Header />
         <main>
