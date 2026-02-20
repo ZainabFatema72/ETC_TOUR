@@ -188,37 +188,53 @@ const AboutUsETC = () => {
         </div>
       </section>
 
- {/* --- ULTRA COMPACT SERVICE SPECTRUM (5 CARDS PER LINE) --- */}
-<section 
-  className="relative py-12 px-4 bg-white bg-center text-white" 
->
+{/* --- PREMIUM SERVICE SPECTRUM (MODERN GRID) --- */}
+<section className="relative py-16 px-4 bg-slate-50 overflow-hidden">
+  <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+    <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+  </div>
+
   <div className="max-w-[1400px] mx-auto relative z-10">
-    <div className="text-center mb-8">
-      <h2 className="text-2xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter drop-shadow-xl">
-        SERVICE <span className="text-blue-800">SPECTRUM</span>
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
+        SERVICE <span className="text-blue-700">SPECTRUM</span>
       </h2>
-      <div className="w-12 h-1 bg-blue-600 mx-auto mt-2 rounded-none"></div>
+      <div className="w-20 h-1.5 bg-blue-600 mx-auto mt-4 shadow-sm"></div>
     </div>
 
-    {/* Responsive Grid: Desktop pe exactly 5 columns */}
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+    {/* Responsive Grid */}
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
       {services.map((service, i) => (
         <motion.div 
           key={i}
-          // Hover par specific blue color jo image_b35dc0.jpg mein dikh raha hai
-          whileHover={{ y: -5, backgroundColor: 'rgba(40, 51, 60, 0.95)', borderColor: 'rgba(59, 130, 246, 0.5)' }}
-         className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center flex flex-col items-center justify-center min-h-[110px] transition-all duration-300 group hover:bg-white/10 hover:border-blue-400/50 shadow-lg"  >
-          {/* Compact Icon */}
-          <ChevronRight className="text-blue-400 mb-2 group-hover:text-white transition-colors" size={16} />
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.02 }} // Fast initial load
+          whileHover={{ 
+            y: -8, 
+            backgroundColor: '#1e293b', 
+            transition: { duration: 0.1, ease: "easeOut" } // Super fast hover in
+          }}
+          // duration-150 makes the 'hover out' fast when moving to next card
+          className="relative bg-white p-6 rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-center min-h-[140px] transition-all duration-150 ease-out group shadow-sm hover:shadow-2xl hover:shadow-blue-900/20"
+        >
+          {/* Animated Indicator */}
+          <div className="mb-4 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-150">
+            <ChevronRight className="text-blue-600 group-hover:text-white transition-colors" size={18} />
+          </div>
           
-          {/* Card Title - High Contrast White text by default */}
-          <h4 className="text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-white italic leading-tight px-1 group-hover:scale-105 transition-transform">
-            "{service}"
+          {/* Card Title */}
+          <h4 className="text-[12px] md:text-[13px] font-extrabold uppercase tracking-wider text-slate-800 leading-snug group-hover:text-white transition-colors duration-150">
+            {service}
           </h4>
           
-          {/* Sub-text visible on hover */}
-          <p className="text-blue-300 font-black text-[8px] uppercase mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            ETC Services
+          {/* Bottom Accent Line */}
+          <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-300 rounded-b-2xl"></div>
+
+          {/* Sub-text Detail */}
+          <p className="absolute bottom-4 text-blue-400 font-bold text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-150 transform translate-y-2 group-hover:translate-y-0">
+            Professional Solution
           </p>
         </motion.div>
       ))}

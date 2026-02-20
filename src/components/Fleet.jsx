@@ -1,101 +1,113 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const fleetData = [
-  { tag: "BMW", title: "The Pinnacle", desc: "Experience power and prestige for an unforgettable journey.", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=800" },
-  { tag: "KIA Carnival", title: "Luxury MPV", desc: "Spacious comfort redefined for weddings and corporate events.", img: "https://images.unsplash.com/photo-1707153634568-7c8709335805?q=80&w=800" },
-  { tag: "Hiace", title: "Group Style", desc: "Ideal for outstation trips without compromising on luxury.", img: "https://images.unsplash.com/photo-1561035514-ee78dc7d7b3f?q=80&w=800" },
-  { tag: "Mercedes", title: "Iconic S-Class", desc: "Unparalleled sophistication and performance on every road.", img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800" },
-  { tag: "Fortuner", title: "Rugged Elegance", desc: "Unleash power on city drives or outstation adventures.", img: "https://images.unsplash.com/photo-1626084300300-3487f98f6d74?q=80&w=800" },
-  { tag: "Weddings", title: "Grand Entrance", desc: "Exquisite rides to make your special day even more memorable.", img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800" },
+const fleet = [
+  { brand: "BMW", title: "THE PINNACLE OF PERFORMANCE", tag: "PERFORMANCE", cat: "LUXURY", img: "https://images.91wheels.com/assets/c_images/gallery/bmw/7-series/bmw-7-series-8-1742387934.jpg?w=480&q=80" },
+  { brand: "KIA CARNIVAL", title: "LUXURY FOR EVERY OCCASION", tag: "EXECUTIVE", cat: "SUV", img: "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/139107/new-carnival-right-front-three-quarter-2.jpeg?isig=0&q=80" },
+  { brand: "COMMUTER HIACE", title: "TRAVEL IN GROUP STYLE", tag: "TRAVEL", cat: "GROUP", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrJFOJ3DJJfwFMycwPycib5bV0_Rv9q5Vb9A&s" },
+  { brand: "WEDDING COLLECTION", title: "A GRAND ENTRANCE", tag: "WEDDINGS", cat: "SPECIAL", img: "https://content.jdmagicbox.com/v2/comp/chandigarh/w5/0172px172.x172.230227114601.f4w5/catalogue/joshi-z-luxury-cars-morinda-road-kurali-luxury-car-rental-hqhv04lw6r.jpg" },
+  { brand: "TOYOTA FORTUNER", title: "RUGGED ELEGANCE", tag: "ADVENTURE", cat: "SUV", img: "https://images.overdrive.in/wp-content/uploads/2016/04/New-Toyota-Fortuner.jpg" },
+  { brand: "MERCEDES BENZ", title: "ICONIC LUXURY", tag: "ICONIC", cat: "LUXURY", img: "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/GLS/9791/1763535546980/front-left-side-47.jpg?impolicy=resize&imwidth=480" },
+  { brand: "MERCEDES S-CLASS", title: "UNMATCHED SOPHISTICATION", tag: "VIP LUXURY", cat: "LUXURY", img: "https://stimg.cardekho.com/images/carexteriorimages/930x620/Mercedes-Benz/S-Class/10852/1763536912245/front-left-side-47.jpg" },
+  { brand: "MERCEDES E-CLASS", title: "TIMELESS ELEGANCE", tag: "BUSINESS", cat: "LUXURY", img: "https://imgd.aeplcdn.com/1920x1080/n/cw/ec/162929/e-class-exterior-right-front-three-quarter-35.png?isig=0&q=80" },
+  { brand: "FORTUNER OUTSTATION", title: "ADVENTURE BEYOND CITY", tag: "OUTSTATION", cat: "SUV", img: "https://content.jdmagicbox.com/comp/bareilly/h7/9999px581.x581.230712155252.m4h7/catalogue/n94bk2xx9g10k01-r8mdqbwmwe-250.jpg" },
+  { brand: "CORPORATE MERCEDES", title: "IMPRESS WITH EXECUTIVE", tag: "CORPORATE", cat: "LUXURY", img: "https://www.mercedes-benz.com/assets/vehicles/international-corporate-sales/update-07-2025/01-international-corporate-sales-media-carousel-cla-3840x2160.jpeg" },
+  { brand: "S-CLASS OUTSTATION", title: "LUXURY BEYOND BOUNDARIES", tag: "ELITE TRAVEL", cat: "LUXURY", img: "https://i0.wp.com/abhaytravels.co.in/wp-content/uploads/2023/05/benzsclass.jpg?fit=642%2C362&ssl=1" },
+  { brand: "HIACE OUTSTATION", title: "GROUP LUXURY ON THE GO", tag: "GROUP PRO", cat: "GROUP", img: "https://heritagecabs.in/assets/uploads/product_images/Toyota-Hiace.png" },
+  { brand: "CARNIVAL OUTSTATION", title: "STYLE BEYOND LIMITS", tag: "LONG DRIVE", cat: "SUV", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiB7mHf_z9JA-2ffu7QiuXncZBpCvwZ5t62Q&s" }
 ];
 
-const LuxuryFleet = () => {
-  return (
-    <section className="relative w-full bg-slate-100 overflow-visible py-4">
-      
-      {/* --- SUPER COMPACT 3D OVAL CONTAINER --- */}
-      <div 
-        className="bg-white relative z-10 shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.15)]" 
-        style={{ 
-          clipPath: 'ellipse(140% 100% at 50% 100%)', 
-          marginTop: '-120px', // Pulls it very close to the previous section
-          paddingTop: '80px', 
-          paddingBottom: '40px'
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-6">
-          
-          {/* Header Section - Minimal Spacing */}
-          <div className="text-center mb-10">
-            <motion.h2 
-              initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-              className="text-2xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter italic"
-            >
-              OUR <span className="text-blue-600">LUXURY</span> FLEET
-            </motion.h2>
-            <div className="w-12 h-1 bg-blue-600 mx-auto mt-2 rounded-full"></div>
-          </div>
+const Fleet = () => {
+  const [filter, setFilter] = useState('ALL');
+  const categories = ['ALL', 'LUXURY', 'SUV', 'GROUP', 'SPECIAL'];
+  const filtered = filter === 'ALL' ? fleet : fleet.filter(c => c.cat === filter);
 
-          {/* ULTRA COMPACT GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6">
-            {fleetData.map((car, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="relative flex flex-col bg-white border border-slate-50 rounded-xl p-4 pt-0 shadow-md group hover:shadow-xl transition-all duration-300"
-              >
-                {/* Compact Floating Image */}
-                <motion.div 
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.1 }}
-                  className="relative -mt-10 mb-3"
+  return (
+    <div className="bg-white min-h-screen font-sans text-[#1A202C]">
+      
+      {/* Header Section - Spacing strictly reduced */}
+      <section className="pt-4 pb-8 md:pt-6 md:pb-10 px-4 md:px-6 max-w-7xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-6 md:mb-8">
+          <div className="w-full mb-4">
+            <span className="text-blue-600 font-bold tracking-[0.2em] text-[10px] uppercase mb-1 block italic">
+              Premium Fleet
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-2">
+              Explore <span className="text-blue-600">Elite.</span>
+            </h2>
+            <div className="w-12 h-0.5 bg-blue-600 mx-auto mb-3"></div>
+            <p className="text-gray-400 text-[10px] md:text-xs max-w-xs mx-auto leading-tight">
+              Curated selection for your premium travel.
+            </p>
+          </div>
+          
+          {/* Filter Bar */}
+          <div className="w-full flex justify-center">
+            <div className="flex flex-wrap justify-center gap-1.5">
+              {categories.map(f => (
+                <button 
+                  key={f} 
+                  onClick={() => setFilter(f)} 
+                  className={`px-6 py-2 text-[9px] font-bold tracking-widest transition-all duration-300 ${
+                    filter === f 
+                    ? 'bg-blue-600 text-white' 
+                    : 'bg-gray-50 text-gray-400 hover:bg-white border border-gray-100'
+                  }`}
                 >
+                  {f}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Grid Section */}
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((car) => (
+              <motion.div 
+                layout 
+                initial={{ opacity: 0, scale: 0.95 }} 
+                animate={{ opacity: 1, scale: 1 }} 
+                exit={{ opacity: 0, scale: 0.9 }} 
+                key={car.brand} 
+                className="group bg-white flex flex-col border border-gray-100 hover:border-blue-100 transition-all duration-300"
+              >
+                <div className="relative h-48 bg-[#F9FAFB] flex items-center justify-center p-6 overflow-hidden">
                   <img 
                     src={car.img} 
-                    className="w-full h-36 object-cover rounded-lg border-4 border-white shadow-lg" 
-                    alt={car.tag} 
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" 
+                    alt={car.brand} 
                   />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[80%] h-2 bg-slate-900/10 blur-lg rounded-full"></div>
-                </motion.div>
-
-                {/* Content - Tight Spacing */}
-                <div className="space-y-1">
-                  <span className="text-blue-600 text-[9px] font-black uppercase tracking-widest">{car.tag}</span>
-                  <h3 className="text-lg font-black text-slate-800 uppercase italic leading-none">{car.title}</h3>
-                  <p className="text-slate-500 text-[11px] leading-tight font-medium line-clamp-2">
-                    {car.desc}
+                  <div className="absolute top-0 left-0 bg-blue-600 text-white text-[7px] px-3 py-1 font-black uppercase tracking-widest">
+                    {car.tag}
+                  </div>
+                </div>
+                
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-black text-gray-900 uppercase leading-none tracking-tighter mb-1">
+                    {car.brand}
+                  </h3>
+                  <p className="text-[9px] text-blue-600 font-bold tracking-wider uppercase mb-4">
+                    {car.title}
                   </p>
                   
-                  <div className="pt-2 border-t border-slate-50 mt-1">
-                     <button className="text-[9px] font-black text-slate-900 uppercase tracking-widest group-hover:text-blue-600 transition-colors">
-                       View Details →
-                     </button>
+                  <div className="mt-auto pt-4 border-t border-gray-50">
+                    <button className="w-full bg-gray-900 text-white py-3 text-[9px] font-bold uppercase tracking-widest hover:bg-blue-600 transition-all flex items-center justify-center gap-2">
+                      Reserve Now
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          {/* CTA - Compacted */}
-          <div className="mt-12 text-center">
-            <motion.button 
-              whileTap={{ scale: 0.95 }}
-              className="bg-slate-900 text-white px-8 py-3 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-lg hover:bg-blue-600 transition-all"
-            >
-              Book Your Ride Now
-            </motion.button>
-          </div>
-        </div>
-      </div>
-
-      {/* Stronger Bottom Shadow Effect */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-slate-300/40 to-transparent"></div>
-    </section>
+          </AnimatePresence>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 
-export default LuxuryFleet;
+export default Fleet;

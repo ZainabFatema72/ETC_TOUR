@@ -276,11 +276,8 @@ const AustraliaPackage = () => {
                 A journey of a thousand miles begins with a single step. We are ready to present you the best!
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all flex items-center gap-3">
+                <Link to="/enquiry" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all flex items-center gap-3">
                   Book Now <Plane size={16} />
-                </Link>
-                <Link to="/tours" className="border-2 border-white/20 hover:border-white text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all">
-                  View All Tours
                 </Link>
               </div>
             </div>

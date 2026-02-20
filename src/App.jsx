@@ -12,14 +12,13 @@ import Services from './components/Services';
 import ContactUs from './components/Contact';
 import PaymentPartners from './components/payment';
 import EnquiryPage from './components/enquery'; 
-import FloatingControls from './FloatingIcons';
+import FloatingControls from './components/FloatingIcons';
 //international tour pages
-import AustraliaPage from './components/AustraliaPage';
-import EuropePage from './components/EuropePage';
 import MaldivesPage from './components/MaldivesPage';
 import SouthAfricaPage from './components/SouthAfricaPage';
 import DubaiPage from './components/DubaiPage';
 //detailpages
+import TourDetails from './components/TourDetails';
 import AustraliaDetail from './components/AustraliaDetail';
 //demestic tour pages 
 import AndamanPage from './components/AndamanPage';
@@ -78,10 +77,9 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/enquiry" element={<EnquiryPage />} />
+
+            <Route path="/tours/:slug" element={<TourDetails />} />
             {/* 2. INTERNATIONAL TOUR ROUTES */}
-            
-            <Route path="/tours/australia" element={<AustraliaPage />} />
-            <Route path="/tours/europe" element={<EuropePage />} />
             <Route path="/tours/maldives" element={<MaldivesPage />} />
             <Route path="/tours/south-africa" element={<SouthAfricaPage />} />
             <Route path="/tours/dubai" element={<DubaiPage />} />

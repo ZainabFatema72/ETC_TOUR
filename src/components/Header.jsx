@@ -43,6 +43,17 @@ const Header = () => {
     }
   };
 
+  // Naya Function: Jab bhi koi Link click ho, top par scroll kare
+  const handleLinkClick = (link) => {
+    setIsMobileMenuOpen(false); // Mobile menu band kare
+    if (link && !link.startsWith('#')) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const toggleMobileSubmenu = (itemName) => {
     setMobileSubmenuOpen(mobileSubmenuOpen === itemName ? null : itemName);
   };
@@ -72,15 +83,19 @@ const Header = () => {
       name: 'International',
       link: '#',
       submenu: [
-        { name: 'AUSTRALIA', path: '/tours/australia' },
-        { name: "EUROPE - Whenever You're Ready", path: '/tours/europe' },
-        { name: 'MALDIVES - The Sunny Side of Life', path: '/tours/maldives' },
+        
+        { name: 'AUSTRALIA', path: '/tours/australia-wonders' },
+        
+{ 
+  name: "EUROPE - Greece & Turkey", 
+  path: "/tours/europe-greece-turkey" // Yeh wahi slug hai jo SQL mein dala tha
+}
+    ,    { name: 'MALDIVES - The Sunny Side of Life', path: '/tours/maldives' },
         { name: 'SOUTH AFRICA - Inspiring New Ways', path: '/tours/south-africa' },
         { name: 'Visit DUBAI', path: '/tours/dubai' }
       ]
     },
     { name: 'Blog', link: '/blog' },
-    {name :'enquiry', link: '/enquiry'},
     // UPDATE: target="_blank" is used for the external car rental link
     { name: 'Car Rentals', link: 'https://express-travel-fxaf.onrender.com', isExternal: true },
     { name: 'Services', link: '/services' },
@@ -175,7 +190,16 @@ const Header = () => {
                       {item.name}
                     </a>
                   ) : (
-                    <Link to={item.link && !item.link.startsWith('#') ? item.link : '#'} onClick={(e) => item.link && item.link.startsWith('#') && handleScrollToSection(e, item.link)} className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 hover:text-blue-600 transition-all">
+                    <Link to={item.link && !item.link.startsWith('#') ? item.link : '#'} 
+                      onClick={(e) => {
+                        if (item.link && item.link.startsWith('#')) {
+                          handleScrollToSection(e, item.link);
+                        } else {
+                          handleLinkClick(item.link);
+                        }
+                      }} 
+                      className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-700 hover:text-blue-600 transition-all"
+                    >
                       {item.name}
                       {item.submenu && <ChevronDown size={14} className="opacity-40" />}
                     </Link>
@@ -183,14 +207,22 @@ const Header = () => {
                   {item.submenu && activeDropdown === item.name && (
                     <ul className="absolute top-12 left-0 w-72 bg-white shadow-2xl border-t-4 border-blue-600 py-2 z-[60]">
                       {item.submenu.map((sub, i) => (
-                        <li key={i}><Link to={sub.path} className="block px-6 py-2.5 text-[11px] font-bold text-slate-600 hover:bg-blue-50 border-b border-gray-50 last:border-0 uppercase transition-colors">{sub.name}</Link></li>
+                        <li key={i}>
+                          <Link 
+                            to={sub.path} 
+                            onClick={() => handleLinkClick(sub.path)}
+                            className="block px-6 py-2.5 text-[11px] font-bold text-slate-600 hover:bg-blue-50 border-b border-gray-50 last:border-0 uppercase transition-colors"
+                          >
+                            {sub.name}
+                          </Link>
+                        </li>
                       ))}
                     </ul>
                   )}
                 </li>
               ))}
               <li className="h-12 flex items-center px-4 bg-gray-50 border-l border-gray-100">
-                <Link to="/enquiry" >
+                <Link to="/enquiry" onClick={() => handleLinkClick('/enquiry')}>
                   <button className="bg-blue-600 text-white py-2 px-5 text-[10px] font-black uppercase flex items-center gap-2 hover:bg-blue-800 transition-all">
                     <Send size={12} /> Enquiry
                   </button>
