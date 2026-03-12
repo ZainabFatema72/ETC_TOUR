@@ -13,14 +13,15 @@ import ContactUs from './components/Contact';
 import PaymentPartners from './components/payment';
 import EnquiryPage from './components/enquery'; 
 import FloatingControls from './components/FloatingIcons';
-//international tour pages
+import TourItinerary from './components/TourItinerary';
+//international tour pages nahi cahoye to yeh hata dena
 import MaldivesPage from './components/MaldivesPage';
 import SouthAfricaPage from './components/SouthAfricaPage';
 import DubaiPage from './components/DubaiPage';
-//detailpages
+//detailpages backend 
 import TourDetails from './components/TourDetails';
 import AustraliaDetail from './components/AustraliaDetail';
-//demestic tour pages 
+//demestic tour pages  nahi cahiye to yeh hata dena
 import AndamanPage from './components/AndamanPage';
 import KeralaPage from './components/KeralaPage';
 import KashmirPage from './components/KashmirPage';
@@ -78,12 +79,15 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/enquiry" element={<EnquiryPage />} />
 
-            <Route path="/tours/:slug" element={<TourDetails />} />
+
+            <Route path="/tours/:slug" element={<TourDetails />} />   
+            <Route path="/tours/:slug/itinerary" element={<TourItinerary />} />
+            <Route path="/tours/:slug" element={<TourItinerary />} />
             {/* 2. INTERNATIONAL TOUR ROUTES */}
             <Route path="/tours/maldives" element={<MaldivesPage />} />
             <Route path="/tours/south-africa" element={<SouthAfricaPage />} />
             <Route path="/tours/dubai" element={<DubaiPage />} />
-{/* detail TOUR ROUTES */}
+            {/* detail TOUR ROUTES */}
             <Route path="/tours/australia/details" element={<AustraliaDetail />} />
 
             // 3. DOMESTIC TOUR ROUTES

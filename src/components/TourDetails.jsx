@@ -11,8 +11,7 @@ const TourDetails = () => {
   const [index, setIndex] = useState(0);
 
   // Static Testimonials (As per your design)
-  const testimonials = [
-    {
+  const testimonials = [ {
       name: "Jestin Mathew",
       text: "We would like to appreciate your good office for arranging travel trip to Maldives for our Director, Mr Walfred Tagor..."
     },
@@ -202,11 +201,11 @@ const TourDetails = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link 
-                  to="/enquiry" 
-                  className="border-2 border-white/20 hover:border-white hover:bg-white/10 text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all rounded-none text-center"
-                >
-                  MORE DETAILS
-                </Link>
+  to={`/tours/${tour.slug}/itinerary`} 
+  className="border-2 border-white/20 hover:border-white hover:bg-white/10 text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all rounded-none text-center"
+>
+  MORE DETAILS
+</Link>
                 <Link 
                   to="/contact" 
                   className="bg-white hover:bg-blue-200 text-blue-600 px-10 py-4 font-black uppercase tracking-widest text-xs transition-all flex items-center gap-3 rounded-none shadow-lg shadow-blue-900/40"

@@ -83,14 +83,11 @@ const Header = () => {
       name: 'International',
       link: '#',
       submenu: [
-        
-        { name: 'AUSTRALIA', path: '/tours/australia-wonders' },
-        
-{ 
-  name: "EUROPE - Greece & Turkey", 
-  path: "/tours/europe-greece-turkey" // Yeh wahi slug hai jo SQL mein dala tha
-}
-    ,    { name: 'MALDIVES - The Sunny Side of Life', path: '/tours/maldives' },
+     { name: 'AUSTRALIA', path: '/tours/australia-wonders' },
+     { name: "EUROPE - Greece & Turkey", path: "/tours/europe-greece-turkey"},  
+       
+    { name: 'MALDIVES - The Sunny Side of Life', path: '/tours/maldives' },
+    
         { name: 'SOUTH AFRICA - Inspiring New Ways', path: '/tours/south-africa' },
         { name: 'Visit DUBAI', path: '/tours/dubai' }
       ]
