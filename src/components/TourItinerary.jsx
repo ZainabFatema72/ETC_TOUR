@@ -4,7 +4,7 @@ import { supabase } from '../supabaseClient';
 import { Plane, Hotel, Utensils, Activity, Car, Star, Quote, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const TourItinerary = () => {
+const TourItinerary = () => { 
   const { slug } = useParams();
   const [tour, setTour] = useState(null);
   const [loading, setLoading] = useState(true);

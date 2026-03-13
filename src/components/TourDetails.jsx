@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import { Plane, Hotel, Utensils, Activity, Car, Star, Quote } from 'lucide-react';
+import { Plane, Hotel, Utensils, Activity, Car, Star, Quote, ChevronRight } from 'lucide-react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 
 const TourDetails = () => {
@@ -10,29 +11,15 @@ const TourDetails = () => {
   const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
 
-  // Static Testimonials (As per your design)
-  const testimonials = [ {
-      name: "Jestin Mathew",
-      text: "We would like to appreciate your good office for arranging travel trip to Maldives for our Director, Mr Walfred Tagor..."
-    },
-    {
-      name: "Ramesh Babu",
-      text: "Dear Sir, We had arranged a vehicle for Mr. Swithun Manoharan - Executive Vice President from your M/s Express Travel..."
-    },
-    {
-      name: "Santosh Krinsky",
-      text: "I wanted to take the opportunity to write to you and thank you for your efforts to make our 2 week tour of Tamil Nadu..."
-    }
+  const testimonials = [ 
+    { name: "Jestin Mathew", text: "We would like to appreciate your good office for arranging travel trip to Maldives for our Director..." },
+    { name: "Ramesh Babu", text: "Dear Sir, We had arranged a vehicle for Mr. Swithun Manoharan - Executive Vice President..." },
+    { name: "Santosh Krinsky", text: "I wanted to take the opportunity to write to you and thank you for your efforts..." }
   ];
 
   useEffect(() => {
     const fetchTour = async () => {
-      const { data, error } = await supabase
-        .from('tours')
-        .select('*')
-        .eq('slug', slug)
-        .single();
-
+      const { data, error } = await supabase.from('tours').select('*').eq('slug', slug).single();
       if (data) setTour(data);
       setLoading(false);
     };
@@ -73,16 +60,14 @@ const TourDetails = () => {
               </span>
             </div>
             
-           <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tighter leading-[0.9] uppercase">
-  {tour.title?.includes(' ') ? (
-    <>
-      {tour.title.split(' ')[0]} <br/>
-      <span className="text-blue-600">{tour.title.split(' ').slice(1).join(' ')}</span>
-    </>
-  ) : (
-    tour.title
-  )}
-</h1>
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tighter leading-[0.9] uppercase">
+              {tour.title?.includes(' ') ? (
+                <>
+                  {tour.title.split(' ')[0]} <br/>
+                  <span className="text-blue-600">{tour.title.split(' ').slice(1).join(' ')}</span>
+                </>
+              ) : ( tour.title )}
+            </h1>
             
             <p className="text-lg md:text-xl font-bold text-slate-700 mb-8 italic border-l-4 border-blue-600 pl-4 bg-blue-50/50 py-2">
               {tour.sub_title}
@@ -95,7 +80,7 @@ const TourDetails = () => {
             {/* Inclusions Grid */}
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 md:gap-4">
               {highlights.map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center p-4 bg-white shadow-sm border border-gray-100 rounded-none transition-all hover:border-blue-300 hover:shadow-md">
+                <div key={idx} className="flex flex-col items-center p-4 bg-white shadow-sm border border-gray-100 rounded-none transition-all hover:border-blue-300">
                   <div className="text-blue-600 mb-2">{item.icon}</div>
                   <span className="text-[10px] font-bold uppercase text-slate-500 tracking-tighter text-center">{item.text}</span>
                 </div>
@@ -113,10 +98,26 @@ const TourDetails = () => {
               alt={tour.title}
               className="w-full h-full object-cover shadow-2xl rounded-none"
             />
-            <div className="absolute -bottom-6 -left-6 bg-blue-600 text-white p-8 hidden md:block shadow-2xl rounded-none">
-              <p className="text-4xl font-black leading-none uppercase">EXPLORE</p>
-              <p className="text-sm font-bold tracking-[0.2em] mt-1 uppercase">DREAM DESTINATION</p>
-            </div>
+            
+            {/* EXPLORE Button (Replacing the static box and wrapping it in a Link) */}
+            <Link 
+              to={`/tours/${tour.slug}/itinerary`}
+              className="absolute -bottom-6 -left-6 bg-blue-600 text-white p-8 hidden md:flex items-center gap-4 shadow-2xl rounded-none hover:bg-slate-900 transition-all duration-300 group cursor-pointer"
+            >
+              <div>
+                <p className="text-4xl font-black leading-none uppercase">EXPLORE</p>
+                <p className="text-sm font-bold tracking-[0.2em] mt-1 uppercase">DREAM DESTINATION</p>
+              </div>
+              <ChevronRight size={32} className="group-hover:translate-x-2 transition-transform" />
+            </Link>
+
+            {/* Mobile View Explore Link */}
+            <Link 
+              to={`/tours/${tour.slug}/itinerary`}
+              className="md:hidden absolute bottom-4 left-4 right-4 bg-blue-600 text-white p-4 text-center font-black uppercase tracking-widest text-sm shadow-xl"
+            >
+              EXPLORE ITINERARY
+            </Link>
           </motion.div>
         </div>
 
@@ -154,11 +155,8 @@ const TourDetails = () => {
                     </div>
 
                     <div className="flex items-center gap-4 mt-auto">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-blue-600 rounded-full animate-ping opacity-20"></div>
-                        <div className="w-14 h-14 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-white text-xl font-black shadow-xl relative z-10">
-                          {testimonials[index].name.charAt(0)}
-                        </div>
+                      <div className="w-14 h-14 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-white text-xl font-black shadow-xl">
+                        {testimonials[index].name.charAt(0)}
                       </div>
                       <div>
                         <p className="font-black text-slate-800 text-sm uppercase tracking-tight">
@@ -172,19 +170,6 @@ const TourDetails = () => {
                     </div>
                   </motion.div>
                 </AnimatePresence>
-              </div>
-
-              {/* Progress Indicators */}
-              <div className="flex items-center gap-3 mt-4">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setIndex(i)}
-                    className={`group relative h-2 transition-all duration-500 rounded-full overflow-hidden ${
-                      index === i ? 'w-12 bg-blue-600' : 'w-3 bg-slate-200'
-                    }`}
-                  />
-                ))}
               </div>
             </div>
             <Quote className="absolute -bottom-6 -right-6 text-slate-50 rotate-180" size={120} />
@@ -201,23 +186,20 @@ const TourDetails = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link 
-  to={`/tours/${tour.slug}/itinerary`} 
-  className="border-2 border-white/20 hover:border-white hover:bg-white/10 text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all rounded-none text-center"
->
-  MORE DETAILS
-</Link>
+                  to={`/tours/${tour.slug}/itinerary`} 
+                  className="border-2 border-white/20 hover:border-white hover:bg-white/10 text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-all rounded-none text-center"
+                >
+                  MORE DETAILS
+                </Link>
                 <Link 
                   to="/contact" 
                   className="bg-white hover:bg-blue-200 text-blue-600 px-10 py-4 font-black uppercase tracking-widest text-xs transition-all flex items-center gap-3 rounded-none shadow-lg shadow-blue-900/40"
                 >
                   CLICK HERE <Plane size={16} />
                 </Link>
-
-                
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

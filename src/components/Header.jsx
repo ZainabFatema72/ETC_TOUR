@@ -84,12 +84,10 @@ const Header = () => {
       link: '#',
       submenu: [
      { name: 'AUSTRALIA', path: '/tours/australia-wonders' },
-     { name: "EUROPE - Greece & Turkey", path: "/tours/europe-greece-turkey"},  
-       
-    { name: 'MALDIVES - The Sunny Side of Life', path: '/tours/maldives' },
-    
-        { name: 'SOUTH AFRICA - Inspiring New Ways', path: '/tours/south-africa' },
-        { name: 'Visit DUBAI', path: '/tours/dubai' }
+     { name: "EUROPE - Greece & Turkey", path: "/tours/europe-greece-turkey"},   
+     { name: 'MALDIVES - The Sunny Side of Life', path: '/tours/maldives-luxury-package' },
+    { name: 'SOUTH AFRICA - Inspiring New Ways', path: '/tours/south-africa-inspiring-new-ways' },
+    { name: 'Visit DUBAI', path: '/tours/visit-dubai' }
       ]
     },
     { name: 'Blog', link: '/blog' },
