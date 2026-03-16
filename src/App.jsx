@@ -19,6 +19,7 @@ import FloatingControls from './components/FloatingIcons';
 // Pages
 import TourItinerary from './components/TourItinerary';
 import DomesticListingPage from './components/DomesticListingPage';
+import International from './components/International';
 
 // Admin Pages
 import AdminPanel from './components/AdminPanel';
@@ -59,6 +60,7 @@ function AppContent() {
           <Route path="/tour/:slug" element={<TourItinerary />} />
           <Route path="/tours/:slug" element={<TourItinerary />} />
           <Route path="/tours/india/:categoryName" element={<DomesticListingPage />} />
+          <Route path="/tours/international" element={<International />} />
 
           {/* Admin Routes */}
           <Route path="/admin-login" element={<AdminLogin />} />

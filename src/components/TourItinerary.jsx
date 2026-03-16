@@ -26,30 +26,45 @@ const TourItinerary = () => {
 useEffect(() => {
   const fetchTourData = async () => {
     try {
-      const { data, error } = await supabase
-        .from('domestic')
+      setLoading(true);
+
+      // 1. Pehle 'tours' (International) table check karein
+      let { data, error } = await supabase
+        .from('tours')
         .select('*')
         .eq('slug', slug)
-        .single();
+        .maybeSingle(); // single() ki jagah maybeSingle() use karein taaki error na aaye agar data na mile
 
-      if (error) {
-        console.error("Supabase Error:", error); // Ye check karein
+      // 2. Agar 'tours' mein nahi mila, toh 'domestic' table check karein
+      if (!data) {
+        const { data: domesticData, error: domesticError } = await supabase
+          .from('domestic')
+          .select('*')
+          .eq('slug', slug)
+          .maybeSingle();
+        
+        data = domesticData;
+      }
+
+      if (!data) {
+        console.error("Tour not found in both tables");
+        setLoading(false);
         return;
       }
 
-      console.log("Data fetched successfully:", data); // Ye check karein
-
+      // Itinerary parse karein
       const parsedItinerary = typeof data.itinerary === 'string' 
         ? JSON.parse(data.itinerary) 
         : data.itinerary;
 
       setTour({ ...data, itinerary: parsedItinerary });
     } catch (err) {
-      console.error("Parsing error:", err.message);
+      console.error("Error fetching data:", err.message);
     } finally {
       setLoading(false);
     }
   };
+
   fetchTourData();
 }, [slug]);
 
