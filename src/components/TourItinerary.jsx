@@ -23,36 +23,35 @@ const TourItinerary = () => {
     { name: "Ramesh Babu", text: "Dear Sir, We had arranged a vehicle for Mr. Swithun Manoharan from your M/s Express Travel..." },
     { name: "Santosh Krinsky", text: "I wanted to take the opportunity to write to you and thank you for your efforts to make our tour..." }
   ];
+useEffect(() => {
+  const fetchTourData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('domestic')
+        .select('*')
+        .eq('slug', slug)
+        .single();
 
-  useEffect(() => {
-    const fetchTourData = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('tours')
-          .select('*')
-          .eq('slug', slug)
-          .single();
-
-        if (error) throw error;
-
-        let parsedItinerary = [];
-        try {
-          parsedItinerary = typeof data.itinerary === 'string' 
-            ? JSON.parse(data.itinerary) 
-            : data.itinerary;
-        } catch (e) {
-          console.error("Itinerary JSON format error:", e);
-        }
-
-        setTour({ ...data, itinerary: parsedItinerary });
-      } catch (err) {
-        console.error("Fetch error:", err.message);
-      } finally {
-        setLoading(false);
+      if (error) {
+        console.error("Supabase Error:", error); // Ye check karein
+        return;
       }
-    };
-    fetchTourData();
-  }, [slug]);
+
+      console.log("Data fetched successfully:", data); // Ye check karein
+
+      const parsedItinerary = typeof data.itinerary === 'string' 
+        ? JSON.parse(data.itinerary) 
+        : data.itinerary;
+
+      setTour({ ...data, itinerary: parsedItinerary });
+    } catch (err) {
+      console.error("Parsing error:", err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchTourData();
+}, [slug]);
 
   // Testimonial Auto-play logic
   useEffect(() => {
@@ -76,7 +75,7 @@ const TourItinerary = () => {
               <span className="h-[2px] w-12 bg-blue-600"></span>
               <span className="text-blue-600 font-bold uppercase tracking-[0.3em] text-[10px]">{tour.category || 'Premium Tour'}</span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black mb-4 tracking-tighter leading-none text-slate-900 uppercase">
+            <h1 className="text-3xl md:text-5xl font-black mb-4 tracking-tighter leading-none text-slate-900 uppercase">
               {tour.title.split(' ')[0]}<br/><span className="text-blue-600">{tour.title.split(' ').slice(1).join(' ')}</span>
             </h1>
             <p className="text-lg font-bold text-slate-500 mb-8 max-w-md italic">
